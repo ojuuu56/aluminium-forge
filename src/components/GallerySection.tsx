@@ -49,7 +49,7 @@ const GalleryItem = ({ item, index, onClick }: {
         delay: index * 0.08,
         ease: "easeOut",
       }}
-      onClick={onClick} // open lightbox
+      onClick={onClick}
       whileHover={{ 
         scale: 1.02,
         y: -8,
@@ -97,7 +97,7 @@ const GalleryItem = ({ item, index, onClick }: {
             <ZoomIn 
               className="absolute top-4 right-4 w-6 h-6 text-glass cursor-pointer"
               onClick={(e) => {
-                e.stopPropagation(); // prevent scroll or parent click
+                e.stopPropagation(); // prevent parent click
                 onClick();           // open lightbox directly
               }}
             />
@@ -116,82 +116,71 @@ const GalleryItem = ({ item, index, onClick }: {
   );
 };
 
+// Fixed Lightbox - single image popup
 const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: () => void }) => {
-
-  // Lock body scroll while lightbox is open
+  // Lock scroll while open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = "auto"; };
   }, []);
 
   return (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-    >
-      {/* Backdrop */}
+    <AnimatePresence>
       <motion.div
-        className="absolute inset-0"
-        style={{
-          background: "hsl(220 15% 5% / 0.95)",
-          backdropFilter: "blur(20px)",
-        }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-      />
-
-      {/* Lightbox content */}
-      <motion.div
-        className="relative w-full h-full flex items-center justify-center"
-        initial={{ scale: 0.8 }}
-        animate={{ scale: 1 }}
-        exit={{ scale: 0.8 }}
-        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        onClick={(e) => e.stopPropagation()}
-        style={{ perspective: "1000px" }}
+        onClick={onClose}
       >
-        <div className="relative w-full h-full flex items-center justify-center">
+        {/* Backdrop */}
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background: "hsl(220 15% 5% / 0.95)",
+            backdropFilter: "blur(20px)",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
+
+        {/* Single Image Container */}
+        <motion.div
+          className="relative max-w-[90%] max-h-[80%] p-2"
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.7, opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            background: "linear-gradient(135deg, hsl(210 15% 30%) 0%, hsl(210 15% 25%) 100%)",
+            boxShadow: "0 30px 60px hsl(0 0% 0% / 0.6)",
+            borderRadius: "10px",
+          }}
+        >
           <img
             src={item.src}
             alt={item.title}
-            className="max-w-full max-h-full object-contain"
+            className="w-full h-auto object-contain rounded-md"
           />
-        </div>
 
-        {/* Caption */}
-        <motion.div
-          className="absolute bottom-6 text-center w-full"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <span className="font-body text-glass text-sm tracking-wider uppercase">
-            {item.category}
-          </span>
-          <h3 className="font-heading text-aluminium-light text-2xl mt-1">
-            {item.title}
-          </h3>
+          {/* Close Button */}
+          <motion.button
+            className="absolute -top-4 -right-4 w-10 h-10 flex items-center justify-center rounded-full"
+            style={{
+              background: "linear-gradient(135deg, hsl(210 15% 30%), hsl(210 15% 25%))",
+              border: "1px solid hsl(210 15% 40%)",
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onClose}
+          >
+            <X className="w-5 h-5 text-aluminium-light" />
+          </motion.button>
         </motion.div>
-
-        {/* Close button */}
-        <motion.button
-          className="absolute top-4 right-4 w-12 h-12 flex items-center justify-center"
-          style={{
-            background: "linear-gradient(135deg, hsl(210 15% 30%), hsl(210 15% 25%))",
-            border: "1px solid hsl(210 15% 40%)",
-          }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={onClose}
-        >
-          <X className="w-6 h-6 text-aluminium-light" />
-        </motion.button>
       </motion.div>
-    </motion.div>
+    </AnimatePresence>
   );
 };
 
@@ -209,7 +198,6 @@ const GallerySection = () => {
       }}
       id="gallery"
     >
-      {/* Section lines */}
       <div
         className="absolute top-0 left-0 w-full h-px"
         style={{
