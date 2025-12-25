@@ -49,14 +49,13 @@ const GalleryItem = ({ item, index, onClick }: {
         delay: index * 0.08,
         ease: "easeOut",
       }}
-      onClick={onClick}
+      onClick={onClick} // open lightbox
       whileHover={{ 
         scale: 1.02,
         y: -8,
         transition: { duration: 0.3 }
       }}
     >
-      {/* Frame */}
       <div
         className="h-full w-full p-2"
         style={{
@@ -68,7 +67,6 @@ const GalleryItem = ({ item, index, onClick }: {
           `,
         }}
       >
-        {/* Image */}
         <div className="relative w-full h-full overflow-hidden">
           {!imageLoaded && (
             <div className="absolute inset-0 bg-steel-dark animate-pulse" />
@@ -96,7 +94,13 @@ const GalleryItem = ({ item, index, onClick }: {
             <span className="font-heading text-aluminium-light text-lg mt-1">
               {item.title}
             </span>
-            <ZoomIn className="absolute top-4 right-4 w-6 h-6 text-glass" />
+            <ZoomIn 
+              className="absolute top-4 right-4 w-6 h-6 text-glass cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation(); // prevent scroll or parent click
+                onClick();           // open lightbox directly
+              }}
+            />
           </div>
 
           {/* Glass reflection */}
@@ -113,6 +117,13 @@ const GalleryItem = ({ item, index, onClick }: {
 };
 
 const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: () => void }) => {
+
+  // Lock body scroll while lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = "auto"; };
+  }, []);
+
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -133,36 +144,27 @@ const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: ()
         exit={{ opacity: 0 }}
       />
 
-      {/* Content */}
+      {/* Lightbox content */}
       <motion.div
-        className="relative max-w-5xl w-full"
-        initial={{ scale: 0.8, rotateY: -30, z: -200 }}
-        animate={{ scale: 1, rotateY: 0, z: 0 }}
-        exit={{ scale: 0.8, rotateY: 30, z: -200 }}
+        className="relative w-full h-full flex items-center justify-center"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.8 }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
         onClick={(e) => e.stopPropagation()}
-        style={{
-          perspective: "1000px",
-        }}
+        style={{ perspective: "1000px" }}
       >
-        {/* Frame */}
-        <div
-          className="p-3"
-          style={{
-            background: "linear-gradient(135deg, hsl(210 15% 30%) 0%, hsl(210 15% 20%) 100%)",
-            boxShadow: "0 50px 100px hsl(0 0% 0% / 0.7), 0 0 100px hsl(200 60% 50% / 0.2)",
-          }}
-        >
+        <div className="relative w-full h-full flex items-center justify-center">
           <img
             src={item.src}
             alt={item.title}
-            className="w-full h-auto max-h-[80vh] object-contain"
+            className="max-w-full max-h-full object-contain"
           />
         </div>
 
         {/* Caption */}
         <motion.div
-          className="mt-4 text-center"
+          className="absolute bottom-6 text-center w-full"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -177,7 +179,7 @@ const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: ()
 
         {/* Close button */}
         <motion.button
-          className="absolute -top-4 -right-4 w-12 h-12 flex items-center justify-center"
+          className="absolute top-4 right-4 w-12 h-12 flex items-center justify-center"
           style={{
             background: "linear-gradient(135deg, hsl(210 15% 30%), hsl(210 15% 25%))",
             border: "1px solid hsl(210 15% 40%)",
@@ -243,7 +245,7 @@ const GallerySection = () => {
           </h2>
         </motion.div>
 
-        {/* Gallery Grid - Masonry-like */}
+        {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
           {galleryItems.map((item, index) => (
             <div
@@ -274,3 +276,4 @@ const GallerySection = () => {
 };
 
 export default GallerySection;
+
