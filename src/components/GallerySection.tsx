@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 
 // Import gallery images
@@ -87,12 +87,7 @@ const GalleryItem = ({ item, index, onClick }: { item: typeof galleryItems[0]; i
   );
 };
 
-const GalleryDetailModal = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: () => void }) => {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = "auto"; };
-  }, []);
-
+const GalleryDetailPanel = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: () => void }) => {
   return (
     <AnimatePresence>
       <motion.div
@@ -102,21 +97,30 @@ const GalleryDetailModal = ({ item, onClose }: { item: typeof galleryItems[0]; o
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Detail Panel */}
         <motion.div
-          className="relative bg-gray-900 rounded-md flex flex-col md:flex-row max-w-5xl w-full p-4 gap-4 z-10"
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 0.9 }}
+          className="relative bg-gray-900 rounded-md flex flex-col md:flex-row gap-4 p-4 z-10"
           onClick={(e) => e.stopPropagation()}
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 50, opacity: 0 }}
+          transition={{ duration: 0.3 }}
         >
+          {/* Image - same size as gallery */}
           <div className="flex-shrink-0 max-w-full md:max-w-[400px] overflow-hidden">
-            <img src={item.src} alt={item.title} className="w-full h-auto object-contain rounded-md" />
+            <img src={item.src} alt={item.title} className="w-full h-auto object-cover rounded-md" />
           </div>
+
+          {/* Info */}
           <div className="flex flex-col justify-center text-white p-2">
             <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
             <p className="text-sm uppercase text-gray-400">{item.category}</p>
           </div>
+
+          {/* Close button */}
           <button
             className="absolute top-2 right-2 w-10 h-10 flex items-center justify-center bg-red-600 rounded-full"
             onClick={onClose}
@@ -142,7 +146,12 @@ const GallerySection = () => {
       id="gallery"
     >
       <div className="container mx-auto px-6">
-        <motion.div className="text-center mb-20" initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
           <span className="text-glass font-bold text-xl tracking-wide uppercase">Our Portfolio</span>
           <h2 className="text-4xl md:text-6xl font-bold text-white mt-2">PROJECT GALLERY</h2>
         </motion.div>
@@ -154,7 +163,7 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {selectedItem && <GalleryDetailModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
+      {selectedItem && <GalleryDetailPanel item={selectedItem} onClose={() => setSelectedItem(null)} />}
     </section>
   );
 };
