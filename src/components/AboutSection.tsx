@@ -119,18 +119,19 @@ const AboutSection = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="relative p-8 group"
-                initial={{ opacity: 0, y: 30, rotateX: -15 }}
-                animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-                transition={{ delay: 0.4 + index * 0.1 }}
+                className="relative p-8 group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
                 style={{
                   background: "linear-gradient(135deg, hsl(220 15% 15%) 0%, hsl(220 15% 12%) 100%)",
                   border: "1px solid hsl(210 15% 25%)",
-                  transformStyle: "preserve-3d",
                 }}
                 whileHover={{
-                  transform: "perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(20px)",
-                  boxShadow: "0 30px 60px hsl(0 0% 0% / 0.4)",
+                  scale: 1.03,
+                  y: -5,
+                  boxShadow: "0 20px 40px hsl(0 0% 0% / 0.4)",
+                  transition: { duration: 0.3, ease: "easeOut" }
                 }}
               >
                 {/* Corner accent */}
@@ -143,14 +144,9 @@ const AboutSection = () => {
 
                 <stat.icon className="w-8 h-8 text-glass mb-4" />
                 
-                <motion.span
-                  className="block font-heading text-4xl md:text-5xl font-bold text-aluminium-light"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.6 + index * 0.1, type: "spring" }}
-                >
+                <span className="block font-heading text-4xl md:text-5xl font-bold text-aluminium-light">
                   {stat.value}
-                </motion.span>
+                </span>
                 
                 <span className="font-body text-muted-foreground mt-2 block">
                   {stat.label}
@@ -158,7 +154,7 @@ const AboutSection = () => {
 
                 {/* Hover glow */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{
                     background: "radial-gradient(circle at 50% 50%, hsl(200 60% 50% / 0.1), transparent 70%)",
                   }}
