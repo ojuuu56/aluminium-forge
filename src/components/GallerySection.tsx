@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { X, ZoomIn } from "lucide-react";
 
 // Import gallery images
@@ -34,39 +34,31 @@ const GalleryItem = ({ item, index, onClick }: {
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  const randomRotation = (index % 2 === 0 ? 1 : -1) * (2 + (index % 3));
   const randomDepth = 20 + (index % 4) * 15;
 
   return (
     <motion.div
       ref={ref}
-      className="gallery-panel relative group cursor-pointer overflow-hidden"
-      initial={{ 
-        opacity: 0, 
-        y: 80, 
-        rotateY: randomRotation * 2,
-        z: -100 
-      }}
-      animate={isInView ? { 
-        opacity: 1, 
-        y: 0, 
-        rotateY: 0,
-        z: 0 
-      } : {}}
+      className="gallery-panel relative group cursor-pointer overflow-hidden h-full w-full"
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 1,
-        delay: index * 0.1,
-        ease: [0.23, 1, 0.32, 1],
+        duration: 0.6,
+        delay: index * 0.08,
+        ease: "easeOut",
       }}
       onClick={onClick}
-      style={{
-        transformStyle: "preserve-3d",
+      whileHover={{ 
+        scale: 1.02,
+        y: -8,
+        transition: { duration: 0.3 }
       }}
     >
       {/* Frame */}
       <div
-        className="absolute inset-0 p-2"
+        className="h-full w-full p-2"
         style={{
           background: "linear-gradient(135deg, hsl(210 15% 35%) 0%, hsl(210 15% 25%) 100%)",
           boxShadow: `
@@ -78,20 +70,22 @@ const GalleryItem = ({ item, index, onClick }: {
       >
         {/* Image */}
         <div className="relative w-full h-full overflow-hidden">
-          <motion.img
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-steel-dark animate-pulse" />
+          )}
+          <img
             src={item.src}
             alt={item.title}
-            className="w-full h-full object-cover"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.6 }}
+            className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => setImageLoaded(true)}
+            loading="lazy"
           />
           
           {/* Overlay */}
-          <motion.div
-            className="absolute inset-0 flex flex-col justify-end p-4"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+          <div
+            className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{
               background: "linear-gradient(to top, hsl(220 15% 8% / 0.9), transparent 60%)",
             }}
@@ -103,7 +97,7 @@ const GalleryItem = ({ item, index, onClick }: {
               {item.title}
             </span>
             <ZoomIn className="absolute top-4 right-4 w-6 h-6 text-glass" />
-          </motion.div>
+          </div>
 
           {/* Glass reflection */}
           <div

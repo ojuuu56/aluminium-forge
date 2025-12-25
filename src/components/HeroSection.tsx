@@ -1,6 +1,154 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+
+// Animated SVG component for metallic flowing effect
+const MetallicFlowSVG = () => {
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none z-[1]"
+      viewBox="0 0 1920 1080"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        {/* Metallic gradient */}
+        <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(210 15% 50%)" stopOpacity="0.3" />
+          <stop offset="50%" stopColor="hsl(200 60% 60%)" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="hsl(210 15% 40%)" stopOpacity="0.3" />
+        </linearGradient>
+        
+        <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(200 60% 70%)" stopOpacity="0" />
+          <stop offset="50%" stopColor="hsl(200 60% 70%)" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="hsl(200 60% 70%)" stopOpacity="0" />
+        </linearGradient>
+
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Flowing metallic curves */}
+      <motion.path
+        d="M-100,200 Q400,100 600,300 T1000,250 T1400,350 T2020,200"
+        fill="none"
+        stroke="url(#metalGradient)"
+        strokeWidth="2"
+        filter="url(#glow)"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ 
+          pathLength: 1, 
+          opacity: 1,
+          pathOffset: [0, 1],
+        }}
+        transition={{ 
+          pathLength: { duration: 2, ease: "easeInOut" },
+          opacity: { duration: 1 },
+          pathOffset: { duration: 20, repeat: Infinity, ease: "linear" }
+        }}
+      />
+
+      <motion.path
+        d="M-100,400 Q300,500 500,350 T900,450 T1300,300 T2020,400"
+        fill="none"
+        stroke="url(#metalGradient)"
+        strokeWidth="1.5"
+        filter="url(#glow)"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ 
+          pathLength: 1, 
+          opacity: 0.7,
+          pathOffset: [0, -1],
+        }}
+        transition={{ 
+          pathLength: { duration: 2.5, ease: "easeInOut", delay: 0.3 },
+          opacity: { duration: 1, delay: 0.3 },
+          pathOffset: { duration: 25, repeat: Infinity, ease: "linear" }
+        }}
+      />
+
+      <motion.path
+        d="M-100,600 Q250,700 450,550 T850,650 T1250,500 T2020,600"
+        fill="none"
+        stroke="url(#metalGradient)"
+        strokeWidth="1"
+        filter="url(#glow)"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ 
+          pathLength: 1, 
+          opacity: 0.5,
+          pathOffset: [0, 1],
+        }}
+        transition={{ 
+          pathLength: { duration: 3, ease: "easeInOut", delay: 0.6 },
+          opacity: { duration: 1, delay: 0.6 },
+          pathOffset: { duration: 30, repeat: Infinity, ease: "linear" }
+        }}
+      />
+
+      {/* Horizontal glass light streaks */}
+      <motion.rect
+        x="-200"
+        y="300"
+        width="400"
+        height="1"
+        fill="url(#glassGradient)"
+        animate={{ x: [-200, 2120] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+      />
+
+      <motion.rect
+        x="-200"
+        y="500"
+        width="300"
+        height="1"
+        fill="url(#glassGradient)"
+        animate={{ x: [-200, 2120] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear", delay: 3, repeatDelay: 4 }}
+      />
+
+      <motion.rect
+        x="-200"
+        y="700"
+        width="350"
+        height="1"
+        fill="url(#glassGradient)"
+        animate={{ x: [-200, 2120] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 5, repeatDelay: 3 }}
+      />
+
+      {/* Floating aluminium particles */}
+      {[...Array(15)].map((_, i) => (
+        <motion.circle
+          key={i}
+          r={1 + Math.random() * 2}
+          fill="hsl(210 15% 70%)"
+          opacity={0.3 + Math.random() * 0.3}
+          initial={{ 
+            cx: Math.random() * 1920, 
+            cy: Math.random() * 1080 
+          }}
+          animate={{ 
+            cy: [null, Math.random() * 1080],
+            cx: [null, Math.random() * 1920],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{ 
+            duration: 10 + Math.random() * 10, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: i * 0.5
+          }}
+        />
+      ))}
+    </svg>
+  );
+};
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,6 +172,9 @@ const HeroSection = () => {
         perspective: "2000px",
       }}
     >
+      {/* Animated SVG Layer */}
+      <MetallicFlowSVG />
+
       {/* Background grid */}
       <div
         className="absolute inset-0 opacity-10"
@@ -184,32 +335,32 @@ const HeroSection = () => {
           <span className="text-foreground font-medium">Manoj Kumar Mandal</span>
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Call Now is primary */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
           className="mt-12 flex flex-col sm:flex-row gap-4"
         >
+          {/* Primary: Click-to-Call */}
           <a
-            href="https://wa.me/9779862198360"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:+9779814318483"
             className="group relative px-8 py-4 overflow-hidden"
             style={{
-              background: "linear-gradient(135deg, hsl(142 70% 35%), hsl(142 70% 45%))",
-              boxShadow: "0 10px 40px hsl(142 70% 45% / 0.3)",
+              background: "linear-gradient(135deg, hsl(200 60% 40%), hsl(200 60% 50%))",
+              boxShadow: "0 10px 40px hsl(200 60% 50% / 0.3)",
             }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <span className="relative flex items-center gap-2 font-heading text-lg tracking-wide text-white">
-              <MessageCircle className="w-5 h-5" />
-              WhatsApp Us
+              <Phone className="w-5 h-5" />
+              Call: 9814318483
             </span>
           </a>
 
+          {/* Secondary: Second number */}
           <a
-            href="tel:+9779814318483"
+            href="tel:+9779802754482"
             className="group relative px-8 py-4 overflow-hidden"
             style={{
               background: "linear-gradient(135deg, hsl(210 15% 25%), hsl(210 15% 35%))",
@@ -220,7 +371,7 @@ const HeroSection = () => {
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <span className="relative flex items-center gap-2 font-heading text-lg tracking-wide text-aluminium-light">
               <Phone className="w-5 h-5" />
-              Call Now
+              Call: 9802754482
             </span>
           </a>
         </motion.div>
