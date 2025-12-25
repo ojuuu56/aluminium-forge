@@ -97,8 +97,8 @@ const GalleryItem = ({ item, index, onClick }: {
             <ZoomIn 
               className="absolute top-4 right-4 w-6 h-6 text-glass cursor-pointer"
               onClick={(e) => {
-                e.stopPropagation(); // prevent parent click
-                onClick();           // open lightbox directly
+                e.stopPropagation();
+                onClick();
               }}
             />
           </div>
@@ -116,9 +116,8 @@ const GalleryItem = ({ item, index, onClick }: {
   );
 };
 
-// Fixed Lightbox - single image popup
+// Lightbox that shows the same image without scaling
 const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: () => void }) => {
-  // Lock scroll while open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = "auto"; };
@@ -136,36 +135,22 @@ const Lightbox = ({ item, onClose }: { item: typeof galleryItems[0]; onClose: ()
         {/* Backdrop */}
         <motion.div
           className="absolute inset-0"
-          style={{
-            background: "hsl(220 15% 5% / 0.95)",
-            backdropFilter: "blur(20px)",
-          }}
+          style={{ background: "hsl(220 15% 5% / 0.95)", backdropFilter: "blur(20px)" }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         />
 
-        {/* Single Image Container */}
+        {/* Exact-size image */}
         <motion.div
-          className="relative max-w-[90%] max-h-[80%] p-2"
-          initial={{ scale: 0.7, opacity: 0 }}
+          className="relative p-2 flex justify-center items-center"
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.7, opacity: 0 }}
-          transition={{ duration: 0.4 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 0.3 }}
           onClick={(e) => e.stopPropagation()}
-          style={{
-            background: "linear-gradient(135deg, hsl(210 15% 30%) 0%, hsl(210 15% 25%) 100%)",
-            boxShadow: "0 30px 60px hsl(0 0% 0% / 0.6)",
-            borderRadius: "10px",
-          }}
         >
-          <img
-            src={item.src}
-            alt={item.title}
-            className="w-full h-auto object-contain rounded-md"
-          />
-
-          {/* Close Button */}
+          <img src={item.src} alt={item.title} className="object-contain rounded-md" />
           <motion.button
             className="absolute -top-4 -right-4 w-10 h-10 flex items-center justify-center rounded-full"
             style={{
@@ -193,71 +178,28 @@ const GallerySection = () => {
     <section
       ref={sectionRef}
       className="relative py-32 overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, hsl(220 15% 8%) 0%, hsl(220 15% 6%) 100%)",
-      }}
+      style={{ background: "linear-gradient(180deg, hsl(220 15% 8%) 0%, hsl(220 15% 6%) 100%)" }}
       id="gallery"
     >
-      <div
-        className="absolute top-0 left-0 w-full h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent, hsl(200 60% 50% / 0.5), transparent)",
-        }}
-      />
+      <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, hsl(200 60% 50% / 0.5), transparent)" }} />
 
       <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.span
-            className="inline-block font-body text-glass tracking-[0.3em] uppercase mb-4"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.2 }}
-          >
-            Our Portfolio
-          </motion.span>
-          <h2
-            className="font-heading text-4xl md:text-6xl font-bold"
-            style={{
-              background: "linear-gradient(135deg, hsl(210 15% 75%), hsl(210 20% 90%), hsl(210 15% 65%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            PROJECT GALLERY
-          </h2>
+        <motion.div className="text-center mb-20" initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
+          <motion.span className="inline-block font-body text-glass tracking-[0.3em] uppercase mb-4" initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} transition={{ delay: 0.2 }}>Our Portfolio</motion.span>
+          <h2 className="font-heading text-4xl md:text-6xl font-bold" style={{ background: "linear-gradient(135deg, hsl(210 15% 75%), hsl(210 20% 90%), hsl(210 15% 65%))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>PROJECT GALLERY</h2>
         </motion.div>
 
-        {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
           {galleryItems.map((item, index) => (
-            <div
-              key={index}
-              className={`
-                ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}
-                ${index === 3 ? "lg:row-span-2" : ""}
-              `}
-            >
-              <GalleryItem
-                item={item}
-                index={index}
-                onClick={() => setSelectedItem(item)}
-              />
+            <div key={index} className={`${index === 0 ? "md:col-span-2 md:row-span-2" : ""} ${index === 3 ? "lg:row-span-2" : ""}`}>
+              <GalleryItem item={item} index={index} onClick={() => setSelectedItem(item)} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Lightbox */}
       <AnimatePresence>
-        {selectedItem && (
-          <Lightbox item={selectedItem} onClose={() => setSelectedItem(null)} />
-        )}
+        {selectedItem && <Lightbox item={selectedItem} onClose={() => setSelectedItem(null)} />}
       </AnimatePresence>
     </section>
   );
