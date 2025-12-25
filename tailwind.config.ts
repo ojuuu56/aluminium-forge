@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -13,6 +18,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        heading: ["Oswald", "sans-serif"],
+        body: ["Rajdhani", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +56,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        aluminium: {
+          DEFAULT: "hsl(var(--aluminium))",
+          dark: "hsl(var(--aluminium-dark))",
+          light: "hsl(var(--aluminium-light))",
+        },
+        steel: "hsl(var(--steel))",
+        graphite: "hsl(var(--graphite))",
+        chrome: "hsl(var(--chrome))",
+        glass: {
+          DEFAULT: "hsl(var(--glass))",
+          light: "hsl(var(--glass-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,25 +86,53 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "float-z": {
+          "0%, 100%": { transform: "translateZ(0) translateY(0)" },
+          "50%": { transform: "translateZ(50px) translateY(-20px)" },
+        },
+        "slide-depth": {
+          "0%": { transform: "translateZ(-100px) translateY(50px)", opacity: "0" },
+          "100%": { transform: "translateZ(0) translateY(0)", opacity: "1" },
+        },
+        "panel-emerge": {
+          "0%": { 
+            transform: "perspective(1000px) rotateY(-30deg) translateZ(-200px)",
+            opacity: "0" 
           },
-          to: {
-            height: "0",
+          "100%": { 
+            transform: "perspective(1000px) rotateY(0deg) translateZ(0)",
+            opacity: "1" 
+          },
+        },
+        "glow-pulse": {
+          "0%, 100%": { 
+            boxShadow: "0 0 20px hsl(200 60% 50% / 0.4)",
+          },
+          "50%": { 
+            boxShadow: "0 0 60px hsl(200 60% 50% / 0.8)",
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float-z": "float-z 6s ease-in-out infinite",
+        "slide-depth": "slide-depth 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "panel-emerge": "panel-emerge 1s cubic-bezier(0.23, 1, 0.32, 1) forwards",
+        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+      },
+      boxShadow: {
+        "metal": "0 20px 60px -15px hsl(200 60% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5)",
+        "panel": "0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(200 60% 50% / 0.1)",
+        "lift": "0 30px 60px -10px hsl(0 0% 0% / 0.6)",
+        "glow": "0 0 60px hsl(200 60% 50% / 0.4)",
       },
     },
   },
