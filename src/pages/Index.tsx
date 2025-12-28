@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ShopBoardSection from "@/components/ShopBoardSection";
 import ServicesSection from "@/components/ServicesSection";
 import GallerySection from "@/components/GallerySection";
 import AboutSection from "@/components/AboutSection";
@@ -13,12 +14,12 @@ const Index = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Nepal Aluminium | Premium Aluminium & Construction Works in Biratnagar</title>
+        <title>नेपाल अल्मुनियम | Nepal Aluminium - बिराटनगर</title>
         <meta 
           name="description" 
-          content="Nepal Aluminium - Premium aluminium windows, doors, glass works, false ceiling, and construction solutions in Biratnagar, Nepal. Quality craftsmanship by Manoj Kumar Mandal." 
+          content="नेपाल अल्मुनियम - अल्मुनियम र UPVC को झ्याल र ढोका, सिसा कार्य, फल्स सिलिङ, बिराटनगर, नेपाल। Nepal Aluminium - Premium aluminium windows, doors, glass works in Biratnagar." 
         />
-        <meta name="keywords" content="aluminium, windows, doors, glass works, construction, Biratnagar, Nepal, false ceiling, kitchen cabinet, steel railing" />
+        <meta name="keywords" content="nepal aluminium, aluminium, windows, doors, glass works, biratnagar, nepal, upvc, false ceiling, kitchen cabinet" />
         <link rel="canonical" href="https://nepalaluminium.com" />
       </Helmet>
 
@@ -32,6 +33,7 @@ const Index = () => {
         {/* Main Content */}
         <main>
           <HeroSection />
+          <ShopBoardSection />
           <ServicesSection />
           <GallerySection />
           <AboutSection />
@@ -41,7 +43,7 @@ const Index = () => {
         {/* Footer */}
         <Footer />
 
-      {/* Floating WhatsApp Button */}
+        {/* Floating WhatsApp Button */}
         <WhatsAppButton />
       </div>
     </HelmetProvider>
