@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         heading: ["Oswald", "sans-serif"],
         body: ["Rajdhani", "sans-serif"],
+        nepali: ["Tiro Devanagari Hindi", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -55,6 +56,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        // Nepal Aluminium brand colors
+        nepal: {
+          red: "hsl(var(--nepal-red))",
+          "dark-red": "hsl(var(--nepal-dark-red))",
+          blue: "hsl(var(--nepal-blue))",
+          "dark-blue": "hsl(var(--nepal-dark-blue))",
         },
         aluminium: {
           DEFAULT: "hsl(var(--aluminium))",
@@ -113,10 +121,10 @@ export default {
         },
         "glow-pulse": {
           "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(200 60% 50% / 0.4)",
+            boxShadow: "0 0 20px hsl(0 75% 50% / 0.4)",
           },
           "50%": { 
-            boxShadow: "0 0 60px hsl(200 60% 50% / 0.8)",
+            boxShadow: "0 0 60px hsl(0 75% 50% / 0.8)",
           },
         },
       },
@@ -129,10 +137,10 @@ export default {
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
       },
       boxShadow: {
-        "metal": "0 20px 60px -15px hsl(200 60% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5)",
-        "panel": "0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(200 60% 50% / 0.1)",
+        "metal": "0 20px 60px -15px hsl(0 75% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5)",
+        "panel": "0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(0 75% 50% / 0.1)",
         "lift": "0 30px 60px -10px hsl(0 0% 0% / 0.6)",
-        "glow": "0 0 60px hsl(200 60% 50% / 0.4)",
+        "glow": "0 0 60px hsl(0 75% 50% / 0.4)",
       },
     },
   },
