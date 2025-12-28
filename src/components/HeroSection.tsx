@@ -2,10 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Phone } from "lucide-react";
 
-// Import shop images
-import shopBoard from "@/assets/shop-board.jpeg";
-import shopFront from "@/assets/shop-front.jpeg";
-
 // Animated SVG component for metallic flowing effect
 const MetallicFlowSVG = () => {
   return (
@@ -189,56 +185,40 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Shop Board Image - Main Feature */}
+      {/* Floating Aluminium Panels */}
       <motion.div
-        className="absolute top-[12%] left-1/2 -translate-x-1/2 w-[90%] max-w-4xl z-10"
+        className="absolute top-[15%] left-[5%] w-32 h-40 z-5 hidden lg:block"
         style={{ y: y1 }}
-        initial={{ opacity: 0, y: 50, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        initial={{ opacity: 0, x: -100, rotateY: -30 }}
+        animate={{ opacity: 0.6, x: 0, rotateY: 0 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
       >
         <div
-          className="p-3 md:p-4"
+          className="w-full h-full"
           style={{
-            background: "linear-gradient(135deg, hsl(220 60% 25%) 0%, hsl(220 60% 18%) 100%)",
-            boxShadow: "0 40px 100px hsl(0 0% 0% / 0.6), 0 0 60px hsl(0 75% 50% / 0.2)",
-            border: "3px solid hsl(0 75% 50% / 0.5)",
+            background: "linear-gradient(135deg, hsl(210 15% 40%), hsl(210 15% 30%))",
+            boxShadow: "20px 20px 60px hsl(0 0% 0% / 0.5)",
+            transform: "perspective(500px) rotateY(15deg)",
           }}
-        >
-          <img
-            src={shopBoard}
-            alt="नेपाल अल्मुनियम - अल्मुनियम र UPVC को झ्याल र ढोका, झ्यालको सिसा"
-            className="w-full h-auto object-contain"
-          />
-        </div>
+        />
       </motion.div>
 
-      {/* Shop Front Image */}
       <motion.div
-        className="absolute bottom-[5%] right-[5%] w-[35%] max-w-md z-10 hidden md:block"
+        className="absolute top-[25%] right-[8%] w-24 h-32 z-5 hidden lg:block"
         style={{ y: y2 }}
         initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.6 }}
+        animate={{ opacity: 0.5, x: 0 }}
+        transition={{ duration: 1.5, delay: 0.7 }}
       >
         <div
-          className="p-2"
+          className="w-full h-full"
           style={{
-            background: "linear-gradient(135deg, hsl(210 15% 30%) 0%, hsl(210 15% 20%) 100%)",
-            boxShadow: "0 30px 80px hsl(0 0% 0% / 0.5)",
-            border: "2px solid hsl(210 15% 40%)",
-            transform: "rotateY(-5deg) rotateX(2deg)",
+            background: "linear-gradient(135deg, hsl(200 60% 50% / 0.3), hsl(200 40% 40% / 0.2))",
+            backdropFilter: "blur(10px)",
+            border: "1px solid hsl(200 60% 60% / 0.3)",
+            transform: "perspective(500px) rotateY(-10deg)",
           }}
-        >
-          <img
-            src={shopFront}
-            alt="नेपाल अल्मुनियम पसल - बिराटनगर"
-            className="w-full h-auto"
-          />
-          <div className="p-2 text-center">
-            <span className="font-nepali text-sm text-aluminium-light">हाम्रो पसल - बिराटनगर</span>
-          </div>
-        </div>
+        />
       </motion.div>
 
       {/* Main Content */}
@@ -301,22 +281,6 @@ const HeroSection = () => {
             </span>
           </a>
 
-          {/* Secondary: WhatsApp */}
-          <a
-            href="https://wa.me/9779862198360"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-8 py-4 overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, hsl(142 70% 35%), hsl(142 70% 45%))",
-              boxShadow: "0 10px 40px hsl(142 70% 40% / 0.3)",
-            }}
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <span className="relative flex items-center gap-2 font-heading text-lg tracking-wide text-white">
-              WhatsApp: 9862198360
-            </span>
-          </a>
         </motion.div>
       </motion.div>
 

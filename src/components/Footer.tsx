@@ -63,14 +63,6 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+9779802754482" className="flex items-center gap-3 group">
-                  <Phone className="w-5 h-5 text-glass flex-shrink-0" />
-                  <span className="font-body text-muted-foreground group-hover:text-glass transition-colors">
-                    +977 9802754482
-                  </span>
-                </a>
-              </li>
-              <li>
                 <a
                   href="https://wa.me/9779862198360"
                   target="_blank"
