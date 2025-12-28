@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,70 +6,76 @@
 
 @layer base {
   :root {
-    /* Industrial Dark Theme */
-    --background: 220 15% 8%;
+    /* Nepal Aluminium Theme - Dark Blue & Red (matching shop board) */
+    --background: 220 50% 10%;
     --foreground: 210 20% 95%;
 
-    --card: 220 15% 12%;
+    --card: 220 50% 14%;
     --card-foreground: 210 20% 95%;
 
-    --popover: 220 15% 10%;
+    --popover: 220 50% 12%;
     --popover-foreground: 210 20% 95%;
 
-    /* Metallic Aluminium Primary */
-    --primary: 210 15% 70%;
-    --primary-foreground: 220 15% 8%;
+    /* Primary Red (from shop board) */
+    --primary: 0 75% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Industrial Steel Secondary */
-    --secondary: 220 10% 20%;
-    --secondary-foreground: 210 20% 90%;
+    /* Dark Blue Secondary (from shop board) */
+    --secondary: 220 60% 20%;
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 220 12% 18%;
-    --muted-foreground: 210 10% 60%;
+    --muted: 220 40% 18%;
+    --muted-foreground: 210 15% 60%;
 
-    /* Glass Blue Accent */
-    --accent: 200 60% 50%;
+    /* Accent - Sky Blue */
+    --accent: 200 70% 50%;
     --accent-foreground: 210 20% 98%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 220 15% 25%;
-    --input: 220 15% 20%;
-    --ring: 200 60% 50%;
+    --border: 220 40% 25%;
+    --input: 220 40% 20%;
+    --ring: 0 75% 50%;
 
     --radius: 0.25rem;
 
-    /* Custom Metallic Colors */
+    /* Custom Colors matching shop board */
+    --nepal-red: 0 75% 50%;
+    --nepal-dark-red: 0 70% 40%;
+    --nepal-blue: 220 60% 25%;
+    --nepal-dark-blue: 220 60% 15%;
     --aluminium: 210 15% 75%;
     --aluminium-dark: 210 15% 55%;
     --aluminium-light: 210 20% 90%;
-    --steel: 220 10% 40%;
-    --graphite: 220 15% 15%;
+    --steel: 220 20% 40%;
+    --graphite: 220 40% 12%;
     --chrome: 210 5% 85%;
-    --glass: 200 60% 50%;
-    --glass-light: 200 40% 70%;
+    --glass: 200 70% 50%;
+    --glass-light: 200 50% 70%;
 
     /* Gradients */
+    --gradient-nepal: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 40%));
+    --gradient-blue: linear-gradient(180deg, hsl(220 60% 25%), hsl(220 60% 15%));
     --gradient-aluminium: linear-gradient(135deg, hsl(210 15% 75%), hsl(210 15% 55%), hsl(210 20% 80%));
-    --gradient-steel: linear-gradient(180deg, hsl(220 10% 30%), hsl(220 15% 15%));
-    --gradient-glass: linear-gradient(135deg, hsl(200 60% 50% / 0.3), hsl(200 40% 70% / 0.1));
-    --gradient-hero: radial-gradient(ellipse at 50% 0%, hsl(220 15% 20%) 0%, hsl(220 15% 8%) 70%);
+    --gradient-steel: linear-gradient(180deg, hsl(220 20% 30%), hsl(220 40% 15%));
+    --gradient-glass: linear-gradient(135deg, hsl(200 70% 50% / 0.3), hsl(200 50% 70% / 0.1));
+    --gradient-hero: radial-gradient(ellipse at 50% 0%, hsl(220 60% 20%) 0%, hsl(220 50% 10%) 70%);
 
     /* Shadows */
-    --shadow-metal: 0 20px 60px -15px hsl(200 60% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    --shadow-panel: 0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(200 60% 50% / 0.1);
-    --shadow-glow: 0 0 60px hsl(200 60% 50% / 0.4);
+    --shadow-metal: 0 20px 60px -15px hsl(0 75% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --shadow-panel: 0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(0 75% 50% / 0.1);
+    --shadow-glow: 0 0 60px hsl(0 75% 50% / 0.4);
     --shadow-lift: 0 30px 60px -10px hsl(0 0% 0% / 0.6);
 
-    --sidebar-background: 220 15% 10%;
+    --sidebar-background: 220 50% 12%;
     --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 200 60% 50%;
+    --sidebar-primary: 0 75% 50%;
     --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent: 220 50% 18%;
     --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 200 60% 50%;
+    --sidebar-border: 220 40% 25%;
+    --sidebar-ring: 0 75% 50%;
   }
 }
 
@@ -94,6 +100,14 @@
 }
 
 @layer components {
+  /* Nepal Red Text */
+  .text-nepal-red {
+    background: var(--gradient-nepal);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   /* Metallic Text */
   .text-metallic {
     background: var(--gradient-aluminium);
@@ -116,11 +130,25 @@
     border: 1px solid hsl(210 15% 35% / 0.5);
   }
 
+  /* Nepal Blue Panel */
+  .nepal-panel {
+    background: linear-gradient(135deg, 
+      hsl(220 60% 20%) 0%, 
+      hsl(220 60% 25%) 50%, 
+      hsl(220 60% 15%) 100%
+    );
+    box-shadow: 
+      inset 0 1px 0 hsl(220 60% 40% / 0.3),
+      inset 0 -1px 0 hsl(0 0% 0% / 0.3),
+      var(--shadow-panel);
+    border: 1px solid hsl(220 60% 35% / 0.5);
+  }
+
   /* Glass Effect */
   .glass-panel {
-    background: hsl(200 60% 50% / 0.05);
+    background: hsl(200 70% 50% / 0.05);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(200 60% 50% / 0.2);
+    border: 1px solid hsl(200 70% 50% / 0.2);
     box-shadow: var(--shadow-glow);
   }
 
@@ -137,6 +165,11 @@
   /* Metallic Border */
   .border-metallic {
     border-image: var(--gradient-aluminium) 1;
+  }
+
+  /* Red Border */
+  .border-nepal {
+    border-image: var(--gradient-nepal) 1;
   }
 
   /* Particle container */
@@ -204,7 +237,7 @@
     bottom: 24px;
     right: 24px;
     z-index: 1000;
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: pulse-glow-green 2s ease-in-out infinite;
   }
 
   /* Hero element animations */
@@ -218,6 +251,11 @@
 
   .hero-element-slow {
     animation: heroFloatSlow 15s ease-in-out infinite;
+  }
+
+  /* Nepali Font */
+  .font-nepali {
+    font-family: 'Tiro Devanagari Hindi', serif;
   }
 }
 
@@ -248,7 +286,7 @@
 
   /* Glow effect */
   .glow-accent {
-    box-shadow: 0 0 40px hsl(200 60% 50% / 0.5);
+    box-shadow: 0 0 40px hsl(0 75% 50% / 0.5);
   }
 
   /* Noise overlay */
@@ -312,12 +350,21 @@
   }
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-glow-green {
   0%, 100% {
     box-shadow: 0 0 20px hsl(142 70% 45% / 0.6);
   }
   50% {
     box-shadow: 0 0 40px hsl(142 70% 45% / 0.9);
+  }
+}
+
+@keyframes pulse-glow-red {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(0 75% 50% / 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(0 75% 50% / 0.9);
   }
 }
 
@@ -357,14 +404,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(220 15% 10%);
+  background: hsl(220 50% 10%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(210 15% 40%), hsl(210 15% 30%));
+  background: linear-gradient(180deg, hsl(0 75% 50%), hsl(0 70% 40%));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, hsl(200 60% 50%), hsl(200 60% 40%));
+  background: linear-gradient(180deg, hsl(0 75% 60%), hsl(0 70% 50%));
 }

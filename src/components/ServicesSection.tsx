@@ -1,44 +1,66 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { 
-  LayoutGrid, 
-  Building2, 
-  Fence, 
-  Layers, 
-  UtensilsCrossed,
-  GlassWater
-} from "lucide-react";
 
 const services = [
   {
-    icon: LayoutGrid,
-    title: "Aluminium Windows & Doors",
-    description: "Premium quality aluminium frames with precision engineering and modern aesthetics.",
+    title: "अल्मुनियम झ्याल र ढोका",
+    titleEn: "Aluminium Windows & Doors",
+    description: "उच्च गुणस्तरको अल्मुनियम फ्रेम झ्याल र ढोका",
   },
   {
-    icon: Building2,
-    title: "Readymade Cement Wall",
-    description: "Durable prefabricated cement wall solutions for rapid construction.",
+    title: "UPVC झ्याल र ढोका",
+    titleEn: "UPVC Windows & Doors",
+    description: "आधुनिक UPVC झ्याल र ढोका जडान",
   },
   {
-    icon: Fence,
-    title: "Steel Railing",
-    description: "Elegant and sturdy steel railings with contemporary designs.",
+    title: "सिसा कार्य (ग्लास वर्क)",
+    titleEn: "Glass Works",
+    description: "पार्टीसन, रेलिङ, प्यानल र फसाड",
   },
   {
-    icon: Layers,
-    title: "False Ceiling",
-    description: "Sophisticated false ceiling installations that transform spaces.",
+    title: "ACP ग्लेजिङ्",
+    titleEn: "ACP Glazing",
+    description: "ACP बोर्ड र ग्लेजिङ् कार्य",
   },
   {
-    icon: UtensilsCrossed,
-    title: "Kitchen Cabinet",
-    description: "Custom aluminium kitchen cabinets built for durability and style.",
+    title: "स्टील रेलिङ्",
+    titleEn: "Steel Railing",
+    description: "सुन्दर र बलियो स्टील रेलिङ्",
   },
   {
-    icon: GlassWater,
-    title: "Glass Works",
-    description: "Complete glass solutions — partitions, railings, panels, and facades.",
+    title: "फल्स सिलिङ्",
+    titleEn: "False Ceiling",
+    description: "आधुनिक फल्स सिलिङ् जडान",
+  },
+  {
+    title: "बाथरुम इन्क्लोजर",
+    titleEn: "Bathroom Enclosure",
+    description: "सिसाको बाथरुम इन्क्लोजर",
+  },
+  {
+    title: "टफन ग्लास",
+    titleEn: "Toughened Glass",
+    description: "बलियो टफन ग्लास जडान",
+  },
+  {
+    title: "सिसा रेलिङ्",
+    titleEn: "Glass Railing",
+    description: "आधुनिक सिसा रेलिङ् डिजाइन",
+  },
+  {
+    title: "किचन क्याबिनेट",
+    titleEn: "Kitchen Cabinet",
+    description: "अल्मुनियम किचन क्याबिनेट",
+  },
+  {
+    title: "अफिस पार्टीसन",
+    titleEn: "Office Partition",
+    description: "अफिसको लागि सिसा पार्टीसन",
+  },
+  {
+    title: "फलामको ट्रस",
+    titleEn: "Iron Truss",
+    description: "फलामको ट्रस संरचना",
   },
 ];
 
@@ -54,55 +76,34 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{
         duration: 0.8,
-        delay: index * 0.15,
+        delay: index * 0.1,
         ease: [0.23, 1, 0.32, 1],
       }}
     >
       <div
-        className="relative p-8 h-full"
+        className="relative p-6 h-full"
         style={{
-          background: "linear-gradient(135deg, hsl(220 15% 15%) 0%, hsl(220 15% 12%) 100%)",
-          border: "1px solid hsl(210 15% 25%)",
-          boxShadow: "0 20px 50px hsl(0 0% 0% / 0.4), inset 0 1px 0 hsl(210 15% 30% / 0.3)",
+          background: "linear-gradient(135deg, hsl(220 50% 14%) 0%, hsl(220 50% 12%) 100%)",
+          border: "1px solid hsl(220 40% 25%)",
+          boxShadow: "0 20px 50px hsl(0 0% 0% / 0.4)",
         }}
       >
-        {/* Metallic corner accents */}
+        {/* Red corner accent */}
         <div
           className="absolute top-0 left-0 w-16 h-16"
           style={{
-            background: "linear-gradient(135deg, hsl(210 15% 45%) 0%, transparent 50%)",
+            background: "linear-gradient(135deg, hsl(0 75% 50% / 0.4) 0%, transparent 50%)",
           }}
         />
-        <div
-          className="absolute bottom-0 right-0 w-16 h-16"
-          style={{
-            background: "linear-gradient(-45deg, hsl(200 60% 50% / 0.3) 0%, transparent 50%)",
-          }}
-        />
-
-        {/* Icon */}
-        <motion.div
-          className="relative w-16 h-16 mb-6"
-          whileHover={{ scale: 1.1, rotateY: 15 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(135deg, hsl(210 15% 30%), hsl(210 15% 40%))",
-              boxShadow: "0 10px 30px hsl(0 0% 0% / 0.3)",
-            }}
-          />
-          <div className="relative flex items-center justify-center h-full">
-            <service.icon className="w-8 h-8 text-glass" />
-          </div>
-        </motion.div>
 
         {/* Content */}
-        <h3 className="font-heading text-xl font-bold text-aluminium-light mb-3">
+        <h3 className="font-nepali text-xl font-bold text-primary mb-1">
           {service.title}
         </h3>
-        <p className="font-body text-muted-foreground leading-relaxed">
+        <p className="font-body text-sm text-aluminium-light mb-2">
+          {service.titleEn}
+        </p>
+        <p className="font-nepali text-muted-foreground leading-relaxed">
           {service.description}
         </p>
 
@@ -110,7 +111,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
           style={{
-            background: "radial-gradient(circle at 50% 50%, hsl(200 60% 50% / 0.1), transparent 70%)",
+            background: "radial-gradient(circle at 50% 50%, hsl(0 75% 50% / 0.1), transparent 70%)",
           }}
         />
       </div>
@@ -128,70 +129,59 @@ const ServicesSection = () => {
       ref={sectionRef}
       className="relative py-32 overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, hsl(220 15% 8%) 0%, hsl(220 15% 10%) 50%, hsl(220 15% 8%) 100%)",
+        background: "linear-gradient(180deg, hsl(220 50% 10%) 0%, hsl(220 50% 12%) 50%, hsl(220 50% 10%) 100%)",
       }}
     >
-      {/* Section background elements */}
       <div
         className="absolute top-0 left-0 w-full h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(210 15% 40%), transparent)",
+          background: "linear-gradient(90deg, transparent, hsl(0 75% 50%), transparent)",
         }}
       />
 
       <div className="container mx-auto px-6">
-        {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           <motion.span
-            className="inline-block font-body text-glass tracking-[0.3em] uppercase mb-4"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.2 }}
+            className="inline-block font-nepali text-primary tracking-wide mb-4 text-lg"
           >
-            What We Offer
+            हाम्रा सेवाहरू
           </motion.span>
           <h2
-            className="font-heading text-4xl md:text-6xl font-bold"
-            style={{
-              background: "linear-gradient(135deg, hsl(210 15% 75%), hsl(210 20% 90%), hsl(210 15% 65%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
+            className="font-nepali text-3xl md:text-5xl font-bold text-primary"
           >
-            SERVICES
+            सेवाहरू
           </h2>
+          <p className="font-body text-muted-foreground mt-2">Our Services</p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={service.title} service={service} index={index} />
+            <ServiceCard key={service.titleEn} service={service} index={index} />
           ))}
         </div>
-      </div>
 
-      {/* Decorative elements */}
-      <motion.div
-        className="absolute bottom-20 right-10 w-40 h-60 opacity-20"
-        style={{
-          background: "linear-gradient(135deg, hsl(210 15% 40%), hsl(210 15% 25%))",
-          transform: "rotateY(-20deg) rotateX(10deg)",
-        }}
-        animate={{
-          rotateY: [-20, -15, -20],
-          translateZ: [0, 30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+        {/* Opening Hours */}
+        <motion.div
+          className="mt-16 text-center p-6"
+          style={{
+            background: "linear-gradient(135deg, hsl(220 50% 14%) 0%, hsl(220 50% 12%) 100%)",
+            border: "1px solid hsl(0 75% 50% / 0.3)",
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5 }}
+        >
+          <h3 className="font-nepali text-xl text-primary mb-2">खुल्ने समय / Opening Hours</h3>
+          <p className="font-nepali text-aluminium-light text-lg">आइतबार - शुक्रबार: बिहान ९:०० - साँझ ७:००</p>
+          <p className="font-body text-muted-foreground">Sunday - Friday: 9:00 AM - 7:00 PM</p>
+          <p className="font-nepali text-destructive mt-2">शनिबार: बन्द / Saturday: Closed</p>
+        </motion.div>
+      </div>
     </section>
   );
 };
