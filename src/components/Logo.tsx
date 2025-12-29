@@ -8,99 +8,96 @@ const Logo = ({ className = "" }: { className?: string }) => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
     >
-      {/* Geometric Logo Mark */}
+      {/* Creative Logo Mark - Window/Door Frame Design */}
       <motion.svg
-        viewBox="0 0 60 60"
-        className="w-12 h-12 md:w-14 md:h-14"
-        initial={{ rotateY: -90 }}
-        animate={{ rotateY: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
+        viewBox="0 0 50 50"
+        className="w-10 h-10 md:w-12 md:h-12"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
       >
         <defs>
-          <linearGradient id="alumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(210 15% 75%)" />
-            <stop offset="50%" stopColor="hsl(210 20% 85%)" />
-            <stop offset="100%" stopColor="hsl(210 15% 60%)" />
+          <linearGradient id="logoRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(0 75% 55%)" />
+            <stop offset="100%" stopColor="hsl(0 70% 45%)" />
           </linearGradient>
-          <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(200 60% 50%)" />
-            <stop offset="100%" stopColor="hsl(200 60% 70%)" />
+          <linearGradient id="logoGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(45 90% 65%)" />
+            <stop offset="100%" stopColor="hsl(45 85% 50%)" />
           </linearGradient>
-          <filter id="metalShadow">
-            <feDropShadow dx="2" dy="4" stdDeviation="2" floodColor="hsl(0 0% 0%)" floodOpacity="0.3"/>
-          </filter>
+          <linearGradient id="logoBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(200 70% 60%)" />
+            <stop offset="100%" stopColor="hsl(200 60% 45%)" />
+          </linearGradient>
         </defs>
         
-        {/* Outer frame - aluminium */}
+        {/* Outer Frame - Red */}
         <rect
-          x="4"
-          y="4"
-          width="52"
-          height="52"
+          x="3"
+          y="3"
+          width="44"
+          height="44"
+          rx="2"
           fill="none"
-          stroke="url(#alumGradient)"
-          strokeWidth="4"
-          filter="url(#metalShadow)"
+          stroke="url(#logoRedGrad)"
+          strokeWidth="3"
         />
         
-        {/* Inner diagonal - aluminium beam */}
+        {/* Inner Cross - Gold */}
+        <line x1="25" y1="3" x2="25" y2="47" stroke="url(#logoGoldGrad)" strokeWidth="2" />
+        <line x1="3" y1="25" x2="47" y2="25" stroke="url(#logoGoldGrad)" strokeWidth="2" />
+        
+        {/* Glass Panels - Blue */}
+        <motion.rect
+          x="7" y="7" width="15" height="15"
+          fill="url(#logoBlueGrad)"
+          opacity="0.6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ delay: 0.5 }}
+        />
+        <motion.rect
+          x="28" y="28" width="15" height="15"
+          fill="url(#logoBlueGrad)"
+          opacity="0.6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ delay: 0.7 }}
+        />
+        
+        {/* N Letter - Red */}
         <motion.path
-          d="M 15 15 L 45 45"
-          stroke="url(#alumGradient)"
-          strokeWidth="6"
-          strokeLinecap="square"
+          d="M 10 42 L 10 33 L 18 42 L 18 33"
+          stroke="url(#logoRedGrad)"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         />
         
-        {/* Glass panel accent */}
-        <motion.rect
-          x="20"
-          y="12"
-          width="18"
-          height="12"
-          fill="url(#glassGradient)"
-          opacity="0.8"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        />
-        
-        {/* Second glass panel */}
-        <motion.rect
-          x="32"
-          y="36"
-          width="14"
-          height="10"
-          fill="url(#glassGradient)"
-          opacity="0.6"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        />
-        
-        {/* N letter hint */}
+        {/* A Letter Hint */}
         <motion.path
-          d="M 10 48 L 10 35 L 22 48 L 22 35"
-          stroke="url(#alumGradient)"
-          strokeWidth="2.5"
+          d="M 32 42 L 36.5 33 L 41 42 M 34 38 L 39 38"
+          stroke="url(#logoGoldGrad)"
+          strokeWidth="1.5"
           fill="none"
-          strokeLinecap="square"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
         />
       </motion.svg>
 
-      {/* Text */}
-      <div className="flex flex-col">
+      {/* Text - Clean & Readable */}
+      <div className="flex flex-col leading-tight">
         <motion.span
-          className="font-heading text-xl md:text-2xl font-bold tracking-wider text-metallic"
+          className="font-heading text-lg md:text-xl font-bold tracking-wide"
           style={{
-            background: "linear-gradient(135deg, hsl(210 15% 75%), hsl(210 20% 90%), hsl(210 15% 65%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "hsl(0 75% 55%)",
           }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,7 +106,10 @@ const Logo = ({ className = "" }: { className?: string }) => {
           NEPAL
         </motion.span>
         <motion.span
-          className="font-heading text-sm md:text-base font-medium tracking-[0.3em] text-glass"
+          className="font-heading text-xs md:text-sm font-medium tracking-[0.15em]"
+          style={{
+            color: "hsl(45 90% 60%)",
+          }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}

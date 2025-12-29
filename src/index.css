@@ -6,81 +6,92 @@
 
 @layer base {
   :root {
-    /* Vibrant Nepal Theme - Red, Blue & Gold */
-    --background: 220 55% 8%;
-    --foreground: 45 30% 95%;
+    /* Fresh Light Theme with Nepal Colors */
+    --background: 210 40% 96%;
+    --foreground: 220 50% 15%;
 
-    --card: 220 50% 12%;
-    --card-foreground: 45 30% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 50% 15%;
 
-    --popover: 220 50% 10%;
-    --popover-foreground: 45 30% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 50% 15%;
 
     /* Primary Nepal Red */
     --primary: 0 75% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Dark Blue */
-    --secondary: 220 60% 18%;
-    --secondary-foreground: 45 30% 95%;
+    /* Light Blue */
+    --secondary: 200 50% 95%;
+    --secondary-foreground: 220 50% 20%;
 
-    --muted: 220 40% 15%;
-    --muted-foreground: 220 20% 60%;
+    --muted: 210 30% 90%;
+    --muted-foreground: 220 20% 45%;
 
     /* Gold Accent */
     --accent: 45 90% 55%;
     --accent-foreground: 220 50% 10%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 45 30% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 40% 22%;
-    --input: 220 40% 18%;
+    --border: 210 30% 85%;
+    --input: 210 30% 90%;
     --ring: 0 75% 50%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
 
-    /* Custom Nepal Colors */
+    /* Custom Nepal Colors - Vibrant */
     --nepal-red: 0 75% 50%;
     --nepal-dark-red: 0 70% 40%;
     --nepal-gold: 45 90% 55%;
     --nepal-gold-light: 45 85% 70%;
-    --nepal-blue: 220 60% 22%;
-    --nepal-dark-blue: 220 60% 12%;
+    --nepal-blue: 220 60% 35%;
+    --nepal-dark-blue: 220 60% 20%;
     --aluminium: 210 15% 75%;
     --aluminium-dark: 210 15% 55%;
     --aluminium-light: 210 20% 90%;
-    --steel: 220 20% 40%;
-    --graphite: 220 40% 10%;
-    --chrome: 210 5% 85%;
+    --steel: 220 20% 50%;
+    --graphite: 220 30% 25%;
+    --chrome: 210 5% 88%;
     --glass: 200 70% 55%;
-    --glass-light: 200 50% 75%;
+    --glass-light: 200 50% 80%;
 
-    /* Vibrant Gradients */
+    /* Fresh Gradients */
     --gradient-nepal: linear-gradient(135deg, hsl(0 75% 55%), hsl(45 90% 55%), hsl(0 75% 50%));
-    --gradient-nepal-solid: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 40%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 90% 60%), hsl(45 85% 45%));
-    --gradient-blue: linear-gradient(180deg, hsl(220 60% 22%), hsl(220 60% 12%));
-    --gradient-aluminium: linear-gradient(135deg, hsl(210 15% 75%), hsl(210 15% 55%), hsl(210 20% 80%));
-    --gradient-vibrant: linear-gradient(135deg, hsl(0 75% 50% / 0.8), hsl(220 60% 20%), hsl(45 90% 55% / 0.6));
-    --gradient-hero: linear-gradient(180deg, hsl(220 60% 12%) 0%, hsl(220 55% 8%) 50%, hsl(0 60% 15%) 100%);
+    --gradient-nepal-solid: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 42%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 90% 60%), hsl(45 85% 48%));
+    --gradient-light: linear-gradient(180deg, hsl(210 40% 98%), hsl(200 50% 95%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 30% 98%));
+    --gradient-hero: linear-gradient(180deg, hsl(210 40% 96%) 0%, hsl(200 50% 92%) 50%, hsl(45 60% 95%) 100%);
 
-    /* Shadows with color */
-    --shadow-red: 0 20px 60px -15px hsl(0 75% 50% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    --shadow-gold: 0 20px 60px -15px hsl(45 90% 55% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.4);
-    --shadow-panel: 0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(0 75% 50% / 0.15);
-    --shadow-glow-red: 0 0 60px hsl(0 75% 50% / 0.5);
-    --shadow-glow-gold: 0 0 60px hsl(45 90% 55% / 0.4);
-    --shadow-lift: 0 30px 60px -10px hsl(0 0% 0% / 0.6);
+    /* Light Shadows */
+    --shadow-soft: 0 4px 20px hsl(220 50% 20% / 0.08);
+    --shadow-card: 0 10px 40px hsl(220 50% 20% / 0.1);
+    --shadow-red: 0 10px 40px hsl(0 75% 50% / 0.2);
+    --shadow-gold: 0 10px 40px hsl(45 90% 55% / 0.2);
+    --shadow-lift: 0 20px 50px hsl(220 50% 20% / 0.15);
 
-    --sidebar-background: 220 50% 10%;
-    --sidebar-foreground: 45 30% 92%;
+    --sidebar-background: 220 50% 98%;
+    --sidebar-foreground: 220 50% 20%;
     --sidebar-primary: 0 75% 50%;
-    --sidebar-primary-foreground: 45 30% 98%;
-    --sidebar-accent: 220 50% 16%;
-    --sidebar-accent-foreground: 45 30% 92%;
-    --sidebar-border: 220 40% 22%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 95%;
+    --sidebar-accent-foreground: 220 50% 20%;
+    --sidebar-border: 210 30% 88%;
     --sidebar-ring: 0 75% 50%;
+  }
+
+  .dark {
+    --background: 220 50% 8%;
+    --foreground: 45 30% 95%;
+    --card: 220 50% 12%;
+    --card-foreground: 45 30% 95%;
+    --popover: 220 50% 10%;
+    --popover-foreground: 45 30% 95%;
+    --muted: 220 40% 15%;
+    --muted-foreground: 220 20% 60%;
+    --border: 220 40% 22%;
+    --input: 220 40% 18%;
   }
 }
 
@@ -95,7 +106,6 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    perspective: 1000px;
     overflow-x: hidden;
   }
 
@@ -115,108 +125,81 @@
 
   /* Gold Text */
   .text-gold {
-    color: hsl(45 90% 60%);
-    text-shadow: 0 0 20px hsl(45 90% 55% / 0.5);
+    color: hsl(45 85% 45%);
   }
 
   /* Metallic Text */
   .text-metallic {
-    background: var(--gradient-aluminium);
+    background: linear-gradient(135deg, hsl(210 15% 55%), hsl(210 15% 75%), hsl(210 15% 50%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Nepal Panel - Vibrant */
+  /* Light Card Panel */
+  .light-panel {
+    background: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 30% 98%));
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(210 30% 90%);
+  }
+
+  /* Nepal Accent Panel */
   .nepal-panel {
-    background: linear-gradient(135deg, 
-      hsl(220 60% 18%) 0%, 
-      hsl(220 60% 22%) 50%, 
-      hsl(220 60% 14%) 100%
-    );
-    box-shadow: 
-      inset 0 1px 0 hsl(45 90% 55% / 0.2),
-      inset 0 -1px 0 hsl(0 0% 0% / 0.3),
-      var(--shadow-panel);
-    border: 1px solid hsl(0 75% 50% / 0.3);
+    background: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 50% 98%));
+    box-shadow: var(--shadow-card), 0 0 0 1px hsl(0 75% 50% / 0.1);
+    border: 1px solid hsl(0 75% 50% / 0.2);
   }
 
   /* Gold Accent Panel */
   .gold-panel {
-    background: linear-gradient(135deg, 
-      hsl(45 90% 55% / 0.1) 0%, 
-      hsl(45 85% 45% / 0.05) 100%
-    );
+    background: linear-gradient(135deg, hsl(45 90% 98%), hsl(45 80% 95%));
     border: 1px solid hsl(45 90% 55% / 0.3);
-    box-shadow: 0 0 30px hsl(45 90% 55% / 0.15);
+    box-shadow: var(--shadow-gold);
   }
 
-  /* Glass Effect */
+  /* Glass Effect - Light */
   .glass-panel {
-    background: hsl(200 70% 50% / 0.08);
+    background: hsl(200 70% 98% / 0.9);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(200 70% 50% / 0.25);
-    box-shadow: 0 0 40px hsl(200 70% 50% / 0.15);
+    border: 1px solid hsl(200 70% 50% / 0.2);
+    box-shadow: 0 4px 30px hsl(200 70% 50% / 0.1);
   }
 
   /* 3D Lift Effect */
   .lift-3d {
     transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
   }
 
   .lift-3d:hover {
-    transform: translateZ(40px) rotateX(-5deg) rotateY(5deg);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift);
   }
 
-  /* Metallic Border */
-  .border-metallic {
-    border-image: var(--gradient-aluminium) 1;
-  }
-
-  /* Gold Border */
-  .border-gold {
-    border: 2px solid hsl(45 90% 55%);
-    box-shadow: 0 0 20px hsl(45 90% 55% / 0.3);
-  }
-
-  /* Red Border */
-  .border-nepal {
-    border: 2px solid hsl(0 75% 50%);
-    box-shadow: 0 0 20px hsl(0 75% 50% / 0.3);
-  }
-
-  /* WhatsApp Button */
-  .whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 1000;
-    animation: pulse-glow-green 2s ease-in-out infinite;
-  }
-
-  /* Service card 3D */
+  /* Service card hover */
   .service-card-3d {
-    transform-style: preserve-3d;
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: white;
+    border: 1px solid hsl(210 30% 90%);
   }
 
   .service-card-3d:hover {
-    transform: perspective(1000px) rotateX(-8deg) rotateY(8deg) translateZ(40px);
-    box-shadow: var(--shadow-lift), 0 0 40px hsl(0 75% 50% / 0.2);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lift), 0 0 30px hsl(0 75% 50% / 0.1);
+    border-color: hsl(0 75% 50% / 0.3);
   }
 
   /* Gallery panel */
   .gallery-panel {
-    transform-style: preserve-3d;
-    transform: perspective(1000px) translateZ(0);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: white;
+    border: 1px solid hsl(210 30% 88%);
   }
 
   .gallery-panel:hover {
-    transform: perspective(1000px) translateZ(50px) rotateY(-3deg);
-    box-shadow: var(--shadow-lift), 0 0 30px hsl(45 90% 55% / 0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift), 0 0 20px hsl(45 90% 55% / 0.15);
+    border-color: hsl(45 90% 55% / 0.4);
   }
 
   /* Nepali Font */
@@ -227,92 +210,68 @@
   /* Vibrant button */
   .btn-vibrant {
     background: var(--gradient-nepal-solid);
-    border: 1px solid hsl(45 90% 55% / 0.3);
-    box-shadow: 0 10px 30px hsl(0 75% 50% / 0.4);
+    color: white;
+    border: none;
+    box-shadow: 0 8px 25px hsl(0 75% 50% / 0.3);
     transition: all 0.3s ease;
   }
 
   .btn-vibrant:hover {
-    box-shadow: 0 15px 40px hsl(0 75% 50% / 0.5), 0 0 40px hsl(45 90% 55% / 0.3);
+    box-shadow: 0 12px 35px hsl(0 75% 50% / 0.4);
     transform: translateY(-2px);
+  }
+
+  /* WhatsApp Button */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    animation: pulse-glow-green 2s ease-in-out infinite;
   }
 }
 
 @layer utilities {
-  /* Brushed metal texture */
-  .brushed-metal {
-    background: 
-      repeating-linear-gradient(
-        90deg,
-        transparent 0px,
-        hsl(210 15% 50% / 0.03) 1px,
-        transparent 2px
-      ),
-      linear-gradient(135deg, 
-        hsl(210 15% 30%) 0%, 
-        hsl(210 15% 40%) 50%, 
-        hsl(210 15% 25%) 100%
-      );
+  /* Subtle pattern */
+  .pattern-dots {
+    background-image: radial-gradient(circle, hsl(220 50% 80% / 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
-  /* Depth shadow */
+  /* Shadow utilities */
   .shadow-depth {
     box-shadow: 
-      0 5px 15px hsl(0 0% 0% / 0.3),
-      0 15px 35px hsl(0 0% 0% / 0.2),
-      0 50px 100px hsl(0 0% 0% / 0.15);
+      0 4px 12px hsl(220 50% 20% / 0.08),
+      0 12px 30px hsl(220 50% 20% / 0.06);
   }
 
-  /* Red glow */
+  /* Red glow - subtle */
   .glow-red {
-    box-shadow: 0 0 40px hsl(0 75% 50% / 0.5);
+    box-shadow: 0 0 30px hsl(0 75% 50% / 0.25);
   }
 
-  /* Gold glow */
+  /* Gold glow - subtle */
   .glow-gold {
-    box-shadow: 0 0 40px hsl(45 90% 55% / 0.5);
-  }
-
-  /* Noise overlay */
-  .noise-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
-    pointer-events: none;
-    z-index: 1;
+    box-shadow: 0 0 30px hsl(45 90% 55% / 0.25);
   }
 }
 
 /* Keyframes */
 @keyframes pulse-glow-green {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(142 70% 45% / 0.6);
+    box-shadow: 0 0 15px hsl(142 70% 45% / 0.5);
   }
   50% {
-    box-shadow: 0 0 40px hsl(142 70% 45% / 0.9);
+    box-shadow: 0 0 30px hsl(142 70% 45% / 0.8);
   }
 }
 
 @keyframes pulse-glow-red {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(0 75% 50% / 0.6);
+    box-shadow: 0 0 15px hsl(0 75% 50% / 0.4);
   }
   50% {
-    box-shadow: 0 0 40px hsl(0 75% 50% / 0.9);
-  }
-}
-
-@keyframes pulse-glow-gold {
-  0%, 100% {
-    box-shadow: 0 0 20px hsl(45 90% 55% / 0.5);
-  }
-  50% {
-    box-shadow: 0 0 50px hsl(45 90% 55% / 0.8);
+    box-shadow: 0 0 30px hsl(0 75% 50% / 0.7);
   }
 }
 
@@ -325,20 +284,20 @@
   }
 }
 
-/* Scrollbar styling */
+/* Fresh Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(220 50% 8%);
+  background: hsl(210 30% 95%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(0 75% 50%), hsl(45 90% 55%), hsl(0 70% 40%));
-  border-radius: 5px;
+  background: linear-gradient(180deg, hsl(0 75% 50%), hsl(45 90% 55%));
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, hsl(0 75% 60%), hsl(45 90% 65%), hsl(0 70% 50%));
+  background: linear-gradient(180deg, hsl(0 75% 55%), hsl(45 90% 60%));
 }
