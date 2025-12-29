@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Phone } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
+import shopBoard from "@/assets/shop-board.jpeg";
+import shopFront from "@/assets/shop-front.jpeg";
 
 // Animated SVG component for metallic flowing effect
 const MetallicFlowSVG = () => {
@@ -11,21 +13,21 @@ const MetallicFlowSVG = () => {
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        {/* Red gradient (matching shop board) */}
+        {/* Nepal Red gradient */}
         <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(0 75% 50%)" stopOpacity="0.3" />
-          <stop offset="50%" stopColor="hsl(0 70% 60%)" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="hsl(0 75% 40%)" stopOpacity="0.3" />
+          <stop offset="0%" stopColor="hsl(0 75% 55%)" stopOpacity="0.4" />
+          <stop offset="50%" stopColor="hsl(45 90% 55%)" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="hsl(0 75% 50%)" stopOpacity="0.4" />
         </linearGradient>
         
-        <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="hsl(200 70% 70%)" stopOpacity="0" />
-          <stop offset="50%" stopColor="hsl(200 70% 70%)" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="hsl(200 70% 70%)" stopOpacity="0" />
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(45 90% 55%)" stopOpacity="0" />
+          <stop offset="50%" stopColor="hsl(45 90% 60%)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="hsl(45 90% 55%)" stopOpacity="0" />
         </linearGradient>
 
         <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -38,7 +40,7 @@ const MetallicFlowSVG = () => {
         d="M-100,200 Q400,100 600,300 T1000,250 T1400,350 T2020,200"
         fill="none"
         stroke="url(#redGradient)"
-        strokeWidth="2"
+        strokeWidth="3"
         filter="url(#glow)"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ 
@@ -57,12 +59,12 @@ const MetallicFlowSVG = () => {
         d="M-100,400 Q300,500 500,350 T900,450 T1300,300 T2020,400"
         fill="none"
         stroke="url(#redGradient)"
-        strokeWidth="1.5"
+        strokeWidth="2"
         filter="url(#glow)"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={{ 
           pathLength: 1, 
-          opacity: 0.7,
+          opacity: 0.8,
           pathOffset: [0, -1],
         }}
         transition={{ 
@@ -72,63 +74,34 @@ const MetallicFlowSVG = () => {
         }}
       />
 
-      <motion.path
-        d="M-100,600 Q250,700 450,550 T850,650 T1250,500 T2020,600"
-        fill="none"
-        stroke="url(#redGradient)"
-        strokeWidth="1"
-        filter="url(#glow)"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ 
-          pathLength: 1, 
-          opacity: 0.5,
-          pathOffset: [0, 1],
-        }}
-        transition={{ 
-          pathLength: { duration: 3, ease: "easeInOut", delay: 0.6 },
-          opacity: { duration: 1, delay: 0.6 },
-          pathOffset: { duration: 30, repeat: Infinity, ease: "linear" }
-        }}
-      />
-
-      {/* Horizontal light streaks */}
+      {/* Gold accent streaks */}
       <motion.rect
         x="-200"
         y="300"
+        width="500"
+        height="2"
+        fill="url(#goldGradient)"
+        animate={{ x: [-200, 2120] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+      />
+
+      <motion.rect
+        x="-200"
+        y="600"
         width="400"
-        height="1"
-        fill="url(#glassGradient)"
+        height="2"
+        fill="url(#goldGradient)"
         animate={{ x: [-200, 2120] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear", delay: 2, repeatDelay: 2 }}
       />
 
-      <motion.rect
-        x="-200"
-        y="500"
-        width="300"
-        height="1"
-        fill="url(#glassGradient)"
-        animate={{ x: [-200, 2120] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear", delay: 3, repeatDelay: 4 }}
-      />
-
-      <motion.rect
-        x="-200"
-        y="700"
-        width="350"
-        height="1"
-        fill="url(#glassGradient)"
-        animate={{ x: [-200, 2120] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 5, repeatDelay: 3 }}
-      />
-
-      {/* Floating aluminium particles */}
-      {[...Array(15)].map((_, i) => (
+      {/* Floating particles */}
+      {[...Array(20)].map((_, i) => (
         <motion.circle
           key={i}
-          r={1 + Math.random() * 2}
-          fill="hsl(210 15% 70%)"
-          opacity={0.3 + Math.random() * 0.3}
+          r={2 + Math.random() * 3}
+          fill={i % 3 === 0 ? "hsl(45 90% 60%)" : "hsl(0 75% 55%)"}
+          opacity={0.4 + Math.random() * 0.4}
           initial={{ 
             cx: Math.random() * 1920, 
             cy: Math.random() * 1080 
@@ -136,13 +109,13 @@ const MetallicFlowSVG = () => {
           animate={{ 
             cy: [null, Math.random() * 1080],
             cx: [null, Math.random() * 1920],
-            opacity: [0.3, 0.6, 0.3],
+            opacity: [0.4, 0.8, 0.4],
           }}
           transition={{ 
-            duration: 10 + Math.random() * 10, 
+            duration: 8 + Math.random() * 8, 
             repeat: Infinity, 
             ease: "easeInOut",
-            delay: i * 0.5
+            delay: i * 0.3
           }}
         />
       ))}
@@ -157,138 +130,217 @@ const HeroSection = () => {
     offset: ["start start", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
       ref={containerRef}
       className="relative min-h-screen overflow-hidden"
       style={{
-        background: "radial-gradient(ellipse at 50% 0%, hsl(220 60% 18%) 0%, hsl(220 50% 10%) 70%)",
+        background: "linear-gradient(180deg, hsl(220 60% 12%) 0%, hsl(220 55% 8%) 50%, hsl(0 60% 15%) 100%)",
         perspective: "2000px",
       }}
     >
       {/* Animated SVG Layer */}
       <MetallicFlowSVG />
 
-      {/* Background grid */}
+      {/* Vibrant gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse at 20% 30%, hsl(0 75% 50% / 0.15) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, hsl(45 90% 55% / 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, hsl(220 60% 30% / 0.2) 0%, transparent 70%)
+          `,
+        }}
+      />
+
+      {/* Decorative grid pattern */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(0 75% 50% / 0.2) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(0 75% 50% / 0.2) 1px, transparent 1px)
+            linear-gradient(hsl(0 75% 50% / 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(45 90% 55% / 0.2) 1px, transparent 1px)
           `,
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* Floating Aluminium Panels */}
-      <motion.div
-        className="absolute top-[15%] left-[5%] w-32 h-40 z-5 hidden lg:block"
-        style={{ y: y1 }}
-        initial={{ opacity: 0, x: -100, rotateY: -30 }}
-        animate={{ opacity: 0.6, x: 0, rotateY: 0 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        <div
-          className="w-full h-full"
-          style={{
-            background: "linear-gradient(135deg, hsl(210 15% 40%), hsl(210 15% 30%))",
-            boxShadow: "20px 20px 60px hsl(0 0% 0% / 0.5)",
-            transform: "perspective(500px) rotateY(15deg)",
-          }}
-        />
-      </motion.div>
-
-      <motion.div
-        className="absolute top-[25%] right-[8%] w-24 h-32 z-5 hidden lg:block"
-        style={{ y: y2 }}
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 0.5, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.7 }}
-      >
-        <div
-          className="w-full h-full"
-          style={{
-            background: "linear-gradient(135deg, hsl(200 60% 50% / 0.3), hsl(200 40% 40% / 0.2))",
-            backdropFilter: "blur(10px)",
-            border: "1px solid hsl(200 60% 60% / 0.3)",
-            transform: "perspective(500px) rotateY(-10deg)",
-          }}
-        />
-      </motion.div>
-
       {/* Main Content */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-end min-h-screen px-6 pb-8 pt-[55%] md:pt-[40%] lg:pt-[35%] text-center"
+        className="relative z-10 container mx-auto px-4 md:px-6 pt-20 pb-8"
         style={{ opacity }}
       >
+        {/* Header Title */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="overflow-hidden mb-4"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8"
         >
-          <h1
-            className="font-nepali text-2xl md:text-3xl lg:text-4xl font-bold text-primary"
-          >
-            नेपाल अल्मुनियम
-          </h1>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="max-w-2xl text-base md:text-lg text-muted-foreground font-nepali"
-        >
-          अल्मुनियम र UPVC को झ्याल र ढोका, झ्यालको सिसा — बिराटनगर, नेपाल
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="mt-4 text-muted-foreground font-body"
-        >
-          <span className="text-aluminium-light">प्रोप्राइटर:</span>{" "}
-          <span className="text-foreground font-medium">मनोज कुमार मण्डल</span>
-        </motion.div>
-
-        {/* CTA Buttons - Call Now is primary */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.3 }}
-          className="mt-8 flex flex-col sm:flex-row gap-4"
-        >
-          {/* Primary: Click-to-Call */}
-          <a
-            href="tel:+9779814318483"
-            className="group relative px-8 py-4 overflow-hidden"
+          <motion.h1
+            className="font-nepali text-4xl md:text-5xl lg:text-6xl font-bold"
             style={{
-              background: "linear-gradient(135deg, hsl(0 75% 45%), hsl(0 75% 55%))",
-              boxShadow: "0 10px 40px hsl(0 75% 50% / 0.4)",
+              background: "linear-gradient(135deg, hsl(0 75% 55%), hsl(45 90% 60%), hsl(0 75% 50%))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textShadow: "0 0 60px hsl(0 75% 50% / 0.5)",
             }}
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <span className="relative flex items-center gap-2 font-heading text-lg tracking-wide text-white">
-              <Phone className="w-5 h-5" />
-              कल गर्नुहोस्: 9814318483
-            </span>
-          </a>
+            नेपाल अल्मुनियम
+          </motion.h1>
+          <p className="font-heading text-xl md:text-2xl text-foreground/80 mt-2">
+            NEPAL ALUMINIUM
+          </p>
+          <p className="font-nepali text-muted-foreground mt-1">
+            अल्मुनियम र UPVC को झ्याल र ढोका, झ्यालको सिसा
+          </p>
+        </motion.div>
 
+        {/* Shop Board & Shop Front - Side by Side */}
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 mb-8">
+          {/* Shop Board - Prominent Display */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ y: y1 }}
+          >
+            <div
+              className="relative p-3 md:p-4"
+              style={{
+                background: "linear-gradient(135deg, hsl(220 60% 18%) 0%, hsl(220 60% 12%) 100%)",
+                boxShadow: `
+                  0 30px 60px hsl(0 0% 0% / 0.6),
+                  0 0 80px hsl(0 75% 50% / 0.2),
+                  inset 0 1px 0 hsl(45 90% 60% / 0.2)
+                `,
+                border: "3px solid hsl(0 75% 50% / 0.5)",
+              }}
+            >
+              {/* Gold corner accents */}
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-[hsl(45_90%_55%)]" />
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-[hsl(45_90%_55%)]" />
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-[hsl(45_90%_55%)]" />
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-[hsl(45_90%_55%)]" />
+              
+              <img
+                src={shopBoard}
+                alt="नेपाल अल्मुनियम - Shop Board - All Services Listed"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            <div className="mt-3 text-center">
+              <p className="font-nepali text-primary text-sm">हाम्रो पसलको बोर्ड</p>
+              <p className="font-body text-muted-foreground text-xs">Our Shop Board</p>
+            </div>
+          </motion.div>
+
+          {/* Shop Front + Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-4"
+          >
+            {/* Shop Front Image */}
+            <div
+              className="p-3"
+              style={{
+                background: "linear-gradient(135deg, hsl(220 60% 18%) 0%, hsl(220 60% 12%) 100%)",
+                boxShadow: "0 20px 50px hsl(0 0% 0% / 0.5), 0 0 40px hsl(45 90% 55% / 0.1)",
+                border: "2px solid hsl(220 60% 30%)",
+              }}
+            >
+              <img
+                src={shopFront}
+                alt="नेपाल अल्मुनियम पसल - बिराटनगर"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            <div className="text-center">
+              <p className="font-nepali text-foreground/80">हाम्रो पसल - बिराटनगर</p>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="grid gap-3">
+              {/* Call Now - Primary */}
+              <a
+                href="tel:+9779814318483"
+                className="flex items-center gap-4 p-4 group transition-all duration-300 hover:scale-[1.02]"
+                style={{
+                  background: "linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 45%))",
+                  boxShadow: "0 10px 30px hsl(0 75% 50% / 0.4), 0 0 20px hsl(0 75% 50% / 0.2)",
+                  border: "1px solid hsl(45 90% 55% / 0.3)",
+                }}
+              >
+                <div className="w-12 h-12 flex items-center justify-center bg-[hsl(45_90%_55%/0.2)] rounded-full">
+                  <Phone className="w-6 h-6 text-[hsl(45_90%_70%)]" />
+                </div>
+                <div>
+                  <span className="font-nepali text-foreground/80 text-sm block">कल गर्नुहोस्</span>
+                  <span className="font-heading text-xl text-foreground font-bold">9814318483</span>
+                </div>
+              </a>
+
+              {/* Location */}
+              <div
+                className="flex items-center gap-4 p-3"
+                style={{
+                  background: "linear-gradient(135deg, hsl(220 60% 18%), hsl(220 60% 15%))",
+                  border: "1px solid hsl(45 90% 55% / 0.2)",
+                }}
+              >
+                <div className="w-10 h-10 flex items-center justify-center bg-primary/20 rounded-full">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <span className="font-nepali text-muted-foreground text-sm">ठेगाना:</span>
+                  <span className="font-nepali text-foreground/90 ml-2">बिराटनगर, नेपाल</span>
+                </div>
+              </div>
+
+              {/* Hours */}
+              <div
+                className="flex items-center gap-4 p-3"
+                style={{
+                  background: "linear-gradient(135deg, hsl(220 60% 18%), hsl(220 60% 15%))",
+                  border: "1px solid hsl(45 90% 55% / 0.2)",
+                }}
+              >
+                <div className="w-10 h-10 flex items-center justify-center bg-primary/20 rounded-full">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <span className="font-nepali text-foreground/90 block">आइत - शुक्र: ९:०० - ७:००</span>
+                  <span className="font-nepali text-destructive text-sm">शनिबार: बन्द</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Proprietor Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center"
+        >
+          <span className="font-nepali text-muted-foreground">प्रोप्राइटर:</span>{" "}
+          <span className="font-heading text-lg text-[hsl(45_90%_65%)] font-medium">मनोज कुमार मण्डल</span>
         </motion.div>
       </motion.div>
 
-      {/* Bottom fade */}
+      {/* Bottom decorative fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40"
+        className="absolute bottom-0 left-0 right-0 h-32"
         style={{
-          background: "linear-gradient(to top, hsl(220 50% 10%), transparent)",
+          background: "linear-gradient(to top, hsl(220 50% 8%), transparent)",
         }}
       />
     </section>

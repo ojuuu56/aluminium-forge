@@ -6,75 +6,80 @@
 
 @layer base {
   :root {
-    /* Nepal Aluminium Theme - Dark Blue & Red (matching shop board) */
-    --background: 220 50% 10%;
-    --foreground: 210 20% 95%;
+    /* Vibrant Nepal Theme - Red, Blue & Gold */
+    --background: 220 55% 8%;
+    --foreground: 45 30% 95%;
 
-    --card: 220 50% 14%;
-    --card-foreground: 210 20% 95%;
+    --card: 220 50% 12%;
+    --card-foreground: 45 30% 95%;
 
-    --popover: 220 50% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 220 50% 10%;
+    --popover-foreground: 45 30% 95%;
 
-    /* Primary Red (from shop board) */
+    /* Primary Nepal Red */
     --primary: 0 75% 50%;
     --primary-foreground: 0 0% 100%;
 
-    /* Dark Blue Secondary (from shop board) */
-    --secondary: 220 60% 20%;
-    --secondary-foreground: 210 20% 95%;
+    /* Dark Blue */
+    --secondary: 220 60% 18%;
+    --secondary-foreground: 45 30% 95%;
 
-    --muted: 220 40% 18%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 220 40% 15%;
+    --muted-foreground: 220 20% 60%;
 
-    /* Accent - Sky Blue */
-    --accent: 200 70% 50%;
-    --accent-foreground: 210 20% 98%;
+    /* Gold Accent */
+    --accent: 45 90% 55%;
+    --accent-foreground: 220 50% 10%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 45 30% 98%;
 
-    --border: 220 40% 25%;
-    --input: 220 40% 20%;
+    --border: 220 40% 22%;
+    --input: 220 40% 18%;
     --ring: 0 75% 50%;
 
     --radius: 0.25rem;
 
-    /* Custom Colors matching shop board */
+    /* Custom Nepal Colors */
     --nepal-red: 0 75% 50%;
     --nepal-dark-red: 0 70% 40%;
-    --nepal-blue: 220 60% 25%;
-    --nepal-dark-blue: 220 60% 15%;
+    --nepal-gold: 45 90% 55%;
+    --nepal-gold-light: 45 85% 70%;
+    --nepal-blue: 220 60% 22%;
+    --nepal-dark-blue: 220 60% 12%;
     --aluminium: 210 15% 75%;
     --aluminium-dark: 210 15% 55%;
     --aluminium-light: 210 20% 90%;
     --steel: 220 20% 40%;
-    --graphite: 220 40% 12%;
+    --graphite: 220 40% 10%;
     --chrome: 210 5% 85%;
-    --glass: 200 70% 50%;
-    --glass-light: 200 50% 70%;
+    --glass: 200 70% 55%;
+    --glass-light: 200 50% 75%;
 
-    /* Gradients */
-    --gradient-nepal: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 40%));
-    --gradient-blue: linear-gradient(180deg, hsl(220 60% 25%), hsl(220 60% 15%));
+    /* Vibrant Gradients */
+    --gradient-nepal: linear-gradient(135deg, hsl(0 75% 55%), hsl(45 90% 55%), hsl(0 75% 50%));
+    --gradient-nepal-solid: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 40%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 90% 60%), hsl(45 85% 45%));
+    --gradient-blue: linear-gradient(180deg, hsl(220 60% 22%), hsl(220 60% 12%));
     --gradient-aluminium: linear-gradient(135deg, hsl(210 15% 75%), hsl(210 15% 55%), hsl(210 20% 80%));
-    --gradient-steel: linear-gradient(180deg, hsl(220 20% 30%), hsl(220 40% 15%));
-    --gradient-glass: linear-gradient(135deg, hsl(200 70% 50% / 0.3), hsl(200 50% 70% / 0.1));
-    --gradient-hero: radial-gradient(ellipse at 50% 0%, hsl(220 60% 20%) 0%, hsl(220 50% 10%) 70%);
+    --gradient-vibrant: linear-gradient(135deg, hsl(0 75% 50% / 0.8), hsl(220 60% 20%), hsl(45 90% 55% / 0.6));
+    --gradient-hero: linear-gradient(180deg, hsl(220 60% 12%) 0%, hsl(220 55% 8%) 50%, hsl(0 60% 15%) 100%);
 
-    /* Shadows */
-    --shadow-metal: 0 20px 60px -15px hsl(0 75% 50% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    --shadow-panel: 0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(0 75% 50% / 0.1);
-    --shadow-glow: 0 0 60px hsl(0 75% 50% / 0.4);
+    /* Shadows with color */
+    --shadow-red: 0 20px 60px -15px hsl(0 75% 50% / 0.4), 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --shadow-gold: 0 20px 60px -15px hsl(45 90% 55% / 0.3), 0 10px 30px -10px hsl(0 0% 0% / 0.4);
+    --shadow-panel: 0 25px 80px -20px hsl(0 0% 0% / 0.8), 0 10px 20px -5px hsl(0 75% 50% / 0.15);
+    --shadow-glow-red: 0 0 60px hsl(0 75% 50% / 0.5);
+    --shadow-glow-gold: 0 0 60px hsl(45 90% 55% / 0.4);
     --shadow-lift: 0 30px 60px -10px hsl(0 0% 0% / 0.6);
 
-    --sidebar-background: 220 50% 12%;
-    --sidebar-foreground: 210 20% 90%;
+    --sidebar-background: 220 50% 10%;
+    --sidebar-foreground: 45 30% 92%;
     --sidebar-primary: 0 75% 50%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 50% 18%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 40% 25%;
+    --sidebar-primary-foreground: 45 30% 98%;
+    --sidebar-accent: 220 50% 16%;
+    --sidebar-accent-foreground: 45 30% 92%;
+    --sidebar-border: 220 40% 22%;
     --sidebar-ring: 0 75% 50%;
   }
 }
@@ -100,12 +105,18 @@
 }
 
 @layer components {
-  /* Nepal Red Text */
-  .text-nepal-red {
+  /* Nepal Gradient Text */
+  .text-nepal-gradient {
     background: var(--gradient-nepal);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Gold Text */
+  .text-gold {
+    color: hsl(45 90% 60%);
+    text-shadow: 0 0 20px hsl(45 90% 55% / 0.5);
   }
 
   /* Metallic Text */
@@ -116,40 +127,36 @@
     background-clip: text;
   }
 
-  /* Aluminium Panel */
-  .aluminium-panel {
-    background: linear-gradient(135deg, 
-      hsl(210 15% 25%) 0%, 
-      hsl(210 15% 35%) 50%, 
-      hsl(210 15% 20%) 100%
-    );
-    box-shadow: 
-      inset 0 1px 0 hsl(210 20% 50% / 0.3),
-      inset 0 -1px 0 hsl(0 0% 0% / 0.3),
-      var(--shadow-panel);
-    border: 1px solid hsl(210 15% 35% / 0.5);
-  }
-
-  /* Nepal Blue Panel */
+  /* Nepal Panel - Vibrant */
   .nepal-panel {
     background: linear-gradient(135deg, 
-      hsl(220 60% 20%) 0%, 
-      hsl(220 60% 25%) 50%, 
-      hsl(220 60% 15%) 100%
+      hsl(220 60% 18%) 0%, 
+      hsl(220 60% 22%) 50%, 
+      hsl(220 60% 14%) 100%
     );
     box-shadow: 
-      inset 0 1px 0 hsl(220 60% 40% / 0.3),
+      inset 0 1px 0 hsl(45 90% 55% / 0.2),
       inset 0 -1px 0 hsl(0 0% 0% / 0.3),
       var(--shadow-panel);
-    border: 1px solid hsl(220 60% 35% / 0.5);
+    border: 1px solid hsl(0 75% 50% / 0.3);
+  }
+
+  /* Gold Accent Panel */
+  .gold-panel {
+    background: linear-gradient(135deg, 
+      hsl(45 90% 55% / 0.1) 0%, 
+      hsl(45 85% 45% / 0.05) 100%
+    );
+    border: 1px solid hsl(45 90% 55% / 0.3);
+    box-shadow: 0 0 30px hsl(45 90% 55% / 0.15);
   }
 
   /* Glass Effect */
   .glass-panel {
-    background: hsl(200 70% 50% / 0.05);
+    background: hsl(200 70% 50% / 0.08);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(200 70% 50% / 0.2);
-    box-shadow: var(--shadow-glow);
+    border: 1px solid hsl(200 70% 50% / 0.25);
+    box-shadow: 0 0 40px hsl(200 70% 50% / 0.15);
   }
 
   /* 3D Lift Effect */
@@ -167,68 +174,16 @@
     border-image: var(--gradient-aluminium) 1;
   }
 
+  /* Gold Border */
+  .border-gold {
+    border: 2px solid hsl(45 90% 55%);
+    box-shadow: 0 0 20px hsl(45 90% 55% / 0.3);
+  }
+
   /* Red Border */
   .border-nepal {
-    border-image: var(--gradient-nepal) 1;
-  }
-
-  /* Particle container */
-  .particles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  /* Hero perspective */
-  .hero-perspective {
-    transform-style: preserve-3d;
-    perspective: 2000px;
-  }
-
-  /* Floating animation */
-  .float-element {
-    animation: floatDepth 8s ease-in-out infinite;
-  }
-
-  /* Service card 3D */
-  .service-card-3d {
-    transform-style: preserve-3d;
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .service-card-3d:hover {
-    transform: perspective(1000px) rotateX(-10deg) rotateY(10deg) translateZ(50px);
-    box-shadow: var(--shadow-lift);
-  }
-
-  /* Gallery panel */
-  .gallery-panel {
-    transform-style: preserve-3d;
-    transform: perspective(1000px) translateZ(0);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .gallery-panel:hover {
-    transform: perspective(1000px) translateZ(60px) rotateY(-5deg);
-    box-shadow: var(--shadow-lift);
-  }
-
-  /* Scroll reveal */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(50px) translateZ(-50px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
+    border: 2px solid hsl(0 75% 50%);
+    box-shadow: 0 0 20px hsl(0 75% 50% / 0.3);
   }
 
   /* WhatsApp Button */
@@ -240,22 +195,46 @@
     animation: pulse-glow-green 2s ease-in-out infinite;
   }
 
-  /* Hero element animations */
-  .hero-element {
-    animation: heroFloat 12s ease-in-out infinite;
+  /* Service card 3D */
+  .service-card-3d {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .hero-element-alt {
-    animation: heroFloatAlt 10s ease-in-out infinite;
+  .service-card-3d:hover {
+    transform: perspective(1000px) rotateX(-8deg) rotateY(8deg) translateZ(40px);
+    box-shadow: var(--shadow-lift), 0 0 40px hsl(0 75% 50% / 0.2);
   }
 
-  .hero-element-slow {
-    animation: heroFloatSlow 15s ease-in-out infinite;
+  /* Gallery panel */
+  .gallery-panel {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) translateZ(0);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .gallery-panel:hover {
+    transform: perspective(1000px) translateZ(50px) rotateY(-3deg);
+    box-shadow: var(--shadow-lift), 0 0 30px hsl(45 90% 55% / 0.15);
   }
 
   /* Nepali Font */
   .font-nepali {
     font-family: 'Tiro Devanagari Hindi', serif;
+  }
+
+  /* Vibrant button */
+  .btn-vibrant {
+    background: var(--gradient-nepal-solid);
+    border: 1px solid hsl(45 90% 55% / 0.3);
+    box-shadow: 0 10px 30px hsl(0 75% 50% / 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .btn-vibrant:hover {
+    box-shadow: 0 15px 40px hsl(0 75% 50% / 0.5), 0 0 40px hsl(45 90% 55% / 0.3);
+    transform: translateY(-2px);
   }
 }
 
@@ -284,9 +263,14 @@
       0 50px 100px hsl(0 0% 0% / 0.15);
   }
 
-  /* Glow effect */
-  .glow-accent {
+  /* Red glow */
+  .glow-red {
     box-shadow: 0 0 40px hsl(0 75% 50% / 0.5);
+  }
+
+  /* Gold glow */
+  .glow-gold {
+    box-shadow: 0 0 40px hsl(45 90% 55% / 0.5);
   }
 
   /* Noise overlay */
@@ -305,51 +289,6 @@
 }
 
 /* Keyframes */
-@keyframes floatDepth {
-  0%, 100% {
-    transform: translateZ(0) translateY(0);
-  }
-  50% {
-    transform: translateZ(30px) translateY(-20px);
-  }
-}
-
-@keyframes heroFloat {
-  0%, 100% {
-    transform: translateZ(0) translateY(0) rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: translateZ(40px) translateY(-15px) rotateX(5deg) rotateY(-3deg);
-  }
-  50% {
-    transform: translateZ(20px) translateY(-30px) rotateX(-3deg) rotateY(5deg);
-  }
-  75% {
-    transform: translateZ(50px) translateY(-10px) rotateX(2deg) rotateY(-5deg);
-  }
-}
-
-@keyframes heroFloatAlt {
-  0%, 100% {
-    transform: translateZ(20px) translateY(-10px) rotateX(2deg) rotateY(3deg);
-  }
-  33% {
-    transform: translateZ(60px) translateY(-25px) rotateX(-5deg) rotateY(-5deg);
-  }
-  66% {
-    transform: translateZ(10px) translateY(-5px) rotateX(3deg) rotateY(8deg);
-  }
-}
-
-@keyframes heroFloatSlow {
-  0%, 100% {
-    transform: translateZ(30px) translateX(0) rotateY(0deg);
-  }
-  50% {
-    transform: translateZ(70px) translateX(-20px) rotateY(-10deg);
-  }
-}
-
 @keyframes pulse-glow-green {
   0%, 100% {
     box-shadow: 0 0 20px hsl(142 70% 45% / 0.6);
@@ -368,50 +307,38 @@
   }
 }
 
-@keyframes spark {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scale(0);
+@keyframes pulse-glow-gold {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(45 90% 55% / 0.5);
   }
   50% {
-    opacity: 1;
-    transform: translateY(-50vh) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-100vh) scale(0.5);
+    box-shadow: 0 0 50px hsl(45 90% 55% / 0.8);
   }
 }
 
-@keyframes drift {
-  0%, 100% {
-    transform: translateX(0) translateY(0);
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
   }
-  25% {
-    transform: translateX(10px) translateY(-10px);
-  }
-  50% {
-    transform: translateX(-5px) translateY(5px);
-  }
-  75% {
-    transform: translateX(15px) translateY(-5px);
+  100% {
+    background-position: 200% 0;
   }
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(220 50% 10%);
+  background: hsl(220 50% 8%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(0 75% 50%), hsl(0 70% 40%));
-  border-radius: 4px;
+  background: linear-gradient(180deg, hsl(0 75% 50%), hsl(45 90% 55%), hsl(0 70% 40%));
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, hsl(0 75% 60%), hsl(0 70% 50%));
+  background: linear-gradient(180deg, hsl(0 75% 60%), hsl(45 90% 65%), hsl(0 70% 50%));
 }
