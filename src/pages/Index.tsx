@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ShopBoardSection from "@/components/ShopBoardSection";
 import ServicesSection from "@/components/ServicesSection";
 import GallerySection from "@/components/GallerySection";
 import AboutSection from "@/components/AboutSection";
@@ -24,26 +23,16 @@ const Index = () => {
       </Helmet>
 
       <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
-        {/* Metallic particles background */}
         <MetallicParticles />
-
-        {/* Navigation */}
         <Navbar />
-
-        {/* Main Content */}
         <main>
           <HeroSection />
-          <ShopBoardSection />
           <ServicesSection />
           <GallerySection />
           <AboutSection />
           <ContactSection />
         </main>
-
-        {/* Footer */}
         <Footer />
-
-        {/* Floating WhatsApp Button */}
         <WhatsAppButton />
       </div>
     </HelmetProvider>
