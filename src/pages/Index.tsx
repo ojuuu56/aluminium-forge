@@ -5,8 +5,9 @@ import GallerySection from "@/components/GallerySection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import MetallicParticles from "@/components/MetallicParticles";
+import FloatingButtons from "@/components/FloatingButtons";
+import ThemeToggle from "@/components/ThemeToggle";
+import FallingAnimation from "@/components/FallingAnimation";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Index = () => {
@@ -23,7 +24,8 @@ const Index = () => {
       </Helmet>
 
       <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
-        <MetallicParticles />
+        <FallingAnimation />
+        <ThemeToggle />
         <Navbar />
         <main>
           <HeroSection />
@@ -33,7 +35,7 @@ const Index = () => {
           <ContactSection />
         </main>
         <Footer />
-        <WhatsAppButton />
+        <FloatingButtons />
       </div>
     </HelmetProvider>
   );
