@@ -98,7 +98,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   return (
     <motion.div
       ref={ref}
-      className="service-card-3d relative group cursor-pointer overflow-hidden"
+      className="service-card-3d relative group cursor-pointer overflow-hidden rounded-xl"
       initial={{ opacity: 0, y: 60, rotateX: -15 }}
       animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{
@@ -108,11 +108,9 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       }}
     >
       <div
-        className="relative h-full"
+        className="relative h-full bg-card border border-border"
         style={{
-          background: "linear-gradient(135deg, hsl(220 50% 14%) 0%, hsl(220 50% 12%) 100%)",
-          border: "1px solid hsl(220 40% 25%)",
-          boxShadow: "0 20px 50px hsl(0 0% 0% / 0.4)",
+          boxShadow: "0 10px 30px hsl(var(--foreground) / 0.1)",
         }}
       >
         {/* Image */}
@@ -133,7 +131,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <div
             className="absolute top-0 left-0 w-20 h-20 pointer-events-none"
             style={{
-              background: "linear-gradient(135deg, hsl(0 75% 50% / 0.6) 0%, transparent 50%)",
+              background: "linear-gradient(135deg, hsl(var(--primary) / 0.6) 0%, transparent 50%)",
             }}
           />
         </div>
@@ -143,10 +141,10 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <h3 className="font-nepali text-lg font-bold text-primary mb-1">
             {service.title}
           </h3>
-          <p className="font-body text-xs text-aluminium-light mb-1">
+          <p className="font-body text-xs text-muted-foreground mb-1">
             {service.titleEn}
           </p>
-          <p className="font-nepali text-sm text-muted-foreground leading-relaxed">
+          <p className="font-nepali text-sm text-foreground/80 leading-relaxed">
             {service.description}
           </p>
         </div>
@@ -155,7 +153,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
           style={{
-            background: "radial-gradient(circle at 50% 50%, hsl(0 75% 50% / 0.1), transparent 70%)",
+            background: "radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), transparent 70%)",
           }}
         />
       </div>
@@ -171,15 +169,12 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, hsl(220 50% 10%) 0%, hsl(220 50% 12%) 50%, hsl(220 50% 10%) 100%)",
-      }}
+      className="relative py-32 overflow-hidden bg-secondary"
     >
       <div
         className="absolute top-0 left-0 w-full h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(0 75% 50%), transparent)",
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary)), transparent)",
         }}
       />
 
@@ -211,17 +206,13 @@ const ServicesSection = () => {
 
         {/* Opening Hours */}
         <motion.div
-          className="mt-16 text-center p-6"
-          style={{
-            background: "linear-gradient(135deg, hsl(220 50% 14%) 0%, hsl(220 50% 12%) 100%)",
-            border: "1px solid hsl(0 75% 50% / 0.3)",
-          }}
+          className="mt-16 text-center p-6 rounded-xl bg-card border border-primary/30"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5 }}
         >
           <h3 className="font-nepali text-xl text-primary mb-2">खुल्ने समय / Opening Hours</h3>
-          <p className="font-nepali text-aluminium-light text-lg">आइतबार - शुक्रबार: बिहान ९:०० - साँझ ७:००</p>
+          <p className="font-nepali text-foreground text-lg">आइतबार - शुक्रबार: बिहान ९:०० - साँझ ७:००</p>
           <p className="font-body text-muted-foreground">Sunday - Friday: 9:00 AM - 7:00 PM</p>
           <p className="font-nepali text-destructive mt-2">शनिबार: बन्द / Saturday: Closed</p>
         </motion.div>
