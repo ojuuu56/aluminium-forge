@@ -63,7 +63,7 @@ const HeroSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Shop Front - Large Display */}
+        {/* Shop Board - Large Display at TOP */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,9 +71,9 @@ const HeroSection = () => {
           className="mb-8"
         >
           <img
-            src={shopFront}
-            alt="नेपाल अल्युमिनियम पसल - बिराटनगर"
-            className="w-full max-w-4xl mx-auto h-auto object-contain rounded-2xl shadow-2xl"
+            src={shopBoard}
+            alt="नेपाल अल्युमिनियम - Shop Board - सम्पूर्ण सेवाहरू"
+            className="w-full max-w-5xl mx-auto h-auto object-contain rounded-2xl shadow-2xl"
             style={{
               boxShadow: "0 30px 80px hsl(var(--foreground) / 0.2)",
             }}
@@ -81,9 +81,9 @@ const HeroSection = () => {
           />
         </motion.div>
 
-        {/* Shop Board + Contact Info Grid */}
+        {/* Shop Front + Contact Info Grid */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Shop Board */}
+          {/* Shop Front */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -91,9 +91,9 @@ const HeroSection = () => {
             className="flex justify-center"
           >
             <img
-              src={shopBoard}
-              alt="नेपाल अल्युमिनियम - Shop Board"
-              className="w-full max-w-md h-auto object-contain rounded-xl shadow-xl"
+              src={shopFront}
+              alt="नेपाल अल्युमिनियम पसल - बिराटनगर"
+              className="w-full max-w-lg h-auto object-contain rounded-xl shadow-xl"
               style={{
                 boxShadow: "0 20px 50px hsl(var(--foreground) / 0.15)",
               }}
@@ -189,7 +189,7 @@ const HeroSection = () => {
         <svg viewBox="0 0 1440 120" fill="none" className="w-full">
           <path
             d="M0,80 C360,120 720,40 1080,80 C1260,100 1380,90 1440,80 L1440,120 L0,120 Z"
-            className="fill-foreground/90"
+            className="fill-card"
           />
         </svg>
       </div>

@@ -86,18 +86,19 @@ const GalleryItem = ({ item, index, onClick }: {
     >
       {/* Frame with gold and red accents */}
       <div
-        className="h-full w-full p-1.5"
+        className={`h-full w-full p-1.5 rounded-lg ${
+          isVideo 
+            ? "bg-gradient-to-br from-primary via-secondary to-accent" 
+            : "bg-card border border-border"
+        }`}
         style={{
-          background: isVideo 
-            ? "linear-gradient(135deg, hsl(0 75% 50%) 0%, hsl(220 60% 20%) 50%, hsl(45 90% 55%) 100%)"
-            : "linear-gradient(135deg, hsl(220 60% 22%) 0%, hsl(220 60% 16%) 100%)",
           boxShadow: isVideo
-            ? "0 20px 50px hsl(0 0% 0% / 0.6), 0 0 30px hsl(0 75% 50% / 0.3)"
-            : "0 15px 40px hsl(0 0% 0% / 0.5)",
+            ? "0 10px 30px hsl(var(--primary) / 0.3)"
+            : "0 8px 25px hsl(var(--foreground) / 0.1)",
         }}
       >
         {/* Inner frame */}
-        <div className="relative w-full h-full overflow-hidden bg-background/50">
+        <div className="relative w-full h-full overflow-hidden bg-card rounded-md">
           {!mediaLoaded && (
             <div className="absolute inset-0 bg-secondary animate-pulse flex items-center justify-center">
               <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -304,17 +305,14 @@ const GallerySection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, hsl(220 50% 8%) 0%, hsl(220 55% 10%) 50%, hsl(0 50% 12%) 100%)",
-      }}
+      className="relative py-24 md:py-32 overflow-hidden bg-background"
       id="gallery"
     >
       {/* Decorative top line */}
       <div
         className="absolute top-0 left-0 w-full h-1"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(0 75% 50%), hsl(45 90% 55%), hsl(0 75% 50%), transparent)",
+          background: "linear-gradient(90deg, transparent, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)), transparent)",
         }}
       />
 
@@ -337,26 +335,14 @@ const GallerySection = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.span
-            className="inline-block font-nepali tracking-wide mb-3 text-lg px-4 py-1"
-            style={{
-              background: "linear-gradient(135deg, hsl(0 75% 50% / 0.2), hsl(45 90% 55% / 0.1))",
-              border: "1px solid hsl(45 90% 55% / 0.3)",
-            }}
+            className="inline-block font-nepali tracking-wide mb-3 text-lg px-4 py-1 rounded-lg text-foreground bg-primary/10 border border-primary/30"
           >
             हाम्रा कामहरू
           </motion.span>
-          <h2
-            className="font-nepali text-4xl md:text-5xl lg:text-6xl font-bold mt-4"
-            style={{
-              background: "linear-gradient(135deg, hsl(0 75% 55%), hsl(45 90% 60%), hsl(0 75% 50%))",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <h2 className="font-nepali text-4xl md:text-5xl lg:text-6xl font-bold mt-4 text-primary">
             ग्यालेरी
           </h2>
-          <p className="font-heading text-foreground/60 mt-2 text-lg">Project Gallery • भिडियो र फोटोहरू</p>
+          <p className="font-heading text-foreground mt-2 text-lg">Project Gallery • भिडियो र फोटोहरू</p>
         </motion.div>
 
         {/* Gallery Grid */}
