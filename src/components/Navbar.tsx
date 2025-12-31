@@ -1,3 +1,4 @@
+// Navbar.tsx
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
@@ -32,10 +33,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Logo />
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.a
@@ -50,15 +49,12 @@ const Navbar = () => {
                 {link.label}
                 <span
                   className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                  style={{
-                    background: "linear-gradient(90deg, hsl(0 75% 50%), hsl(45 90% 55%))",
-                  }}
+                  style={{ background: "linear-gradient(90deg, hsl(0 75% 50%), hsl(45 90% 55%))" }}
                 />
               </motion.a>
             ))}
           </div>
 
-          {/* CTA & WhatsApp */}
           <div className="hidden lg:flex items-center gap-4">
             <motion.a
               href="tel:+9779814318483"
@@ -97,30 +93,22 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg"
             onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: scrolled ? "hsl(0 75% 50%)" : "hsl(0 75% 50% / 0.9)",
-            }}
+            style={{ background: scrolled ? "hsl(0 75% 50%)" : "hsl(0 75% 50% / 0.9)" }}
           >
             {isOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <motion.div
         className="lg:hidden overflow-hidden"
         initial={false}
         animate={{ height: isOpen ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
-        style={{
-          background: "hsl(0 0% 100% / 0.98)",
-          backdropFilter: "blur(20px)",
-          borderTop: isOpen ? "1px solid hsl(210 30% 90%)" : "none",
-        }}
+        style={{ background: "hsl(0 0% 100% / 0.98)", backdropFilter: "blur(20px)", borderTop: isOpen ? "1px solid hsl(210 30% 90%)" : "none" }}
       >
         <div className="container mx-auto px-6 py-6 space-y-4">
           {navLinks.map((link, index) => (
@@ -140,9 +128,7 @@ const Navbar = () => {
           <motion.a
             href="tel:+9779814318483"
             className="flex items-center gap-2 px-5 py-3 w-full justify-center mt-4 rounded-lg"
-            style={{
-              background: "linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 45%))",
-            }}
+            style={{ background: "linear-gradient(135deg, hsl(0 75% 50%), hsl(0 70% 45%))" }}
             onClick={() => setIsOpen(false)}
           >
             <Phone className="w-4 h-4 text-white" />
@@ -154,9 +140,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-3 w-full justify-center rounded-lg"
-            style={{
-              background: "linear-gradient(135deg, hsl(120 70% 45%), hsl(120 65% 35%))",
-            }}
+            style={{ background: "linear-gradient(135deg, hsl(120 70% 45%), hsl(120 65% 35%))" }}
             onClick={() => setIsOpen(false)}
           >
             <MessageCircle className="w-4 h-4 text-white" />
@@ -169,4 +153,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
