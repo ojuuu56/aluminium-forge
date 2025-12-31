@@ -17,75 +17,63 @@ import ironTruss from "@/assets/services/iron-truss.jpg";
 
 const services = [
   {
-    title: "अल्मुनियम झ्याल र ढोका",
-    titleEn: "Aluminium Windows & Doors",
-    description: "उच्च गुणस्तरको अल्मुनियम फ्रेम झ्याल र ढोका",
+    title: "Aluminium Windows & Doors",
+    description: "High-quality aluminium windows and doors fabrication",
     image: aluminiumWindow,
   },
   {
-    title: "UPVC झ्याल र ढोका",
-    titleEn: "UPVC Windows & Doors",
-    description: "आधुनिक UPVC झ्याल र ढोका जडान",
+    title: "UPVC Windows & Doors",
+    description: "Modern UPVC windows and doors installation",
     image: upvcWindow,
   },
   {
-    title: "सिसा कार्य (ग्लास वर्क)",
-    titleEn: "Glass Works",
-    description: "पार्टीसन, रेलिङ, प्यानल र फसाड",
+    title: "Glass Works",
+    description: "Partitions, railings, panels, and facades",
     image: glassWork,
   },
   {
-    title: "ACP ग्लेजिङ्",
-    titleEn: "ACP Glazing",
-    description: "ACP बोर्ड र ग्लेजिङ् कार्य",
+    title: "ACP Glazing",
+    description: "ACP board and glazing works",
     image: acpGlazing,
   },
   {
-    title: "स्टील रेलिङ्",
-    titleEn: "Steel Railing",
-    description: "सुन्दर र बलियो स्टील रेलिङ्",
+    title: "Steel Railing",
+    description: "Beautiful and sturdy steel railings",
     image: steelRailing,
   },
   {
-    title: "फल्स सिलिङ्",
-    titleEn: "False Ceiling",
-    description: "आधुनिक फल्स सिलिङ् जडान",
+    title: "False Ceiling",
+    description: "Modern false ceiling installation",
     image: falseCeiling,
   },
   {
-    title: "बाथरुम इन्क्लोजर",
-    titleEn: "Bathroom Enclosure",
-    description: "सिसाको बाथरुम इन्क्लोजर",
+    title: "Bathroom Enclosure",
+    description: "Glass bathroom enclosure installation",
     image: bathroomEnclosure,
   },
   {
-    title: "टफन ग्लास",
-    titleEn: "Toughened Glass",
-    description: "बलियो टफन ग्लास जडान",
+    title: "Toughened Glass",
+    description: "Strong toughened glass for various uses",
     image: toughenedGlass,
   },
   {
-    title: "सिसा रेलिङ्",
-    titleEn: "Glass Railing",
-    description: "आधुनिक सिसा रेलिङ् डिजाइन",
+    title: "Glass Railing",
+    description: "Modern glass railing design",
     image: glassRailing,
   },
   {
-    title: "किचन क्याबिनेट",
-    titleEn: "Kitchen Cabinet",
-    description: "अल्मुनियम किचन क्याबिनेट",
+    title: "Kitchen Cabinet",
+    description: "Aluminium kitchen cabinet fabrication",
     image: kitchenCabinet,
   },
   {
-    title: "अफिस पार्टीसन",
-    titleEn: "Office Partition",
-    description: "अफिसको लागि सिसा पार्टीसन",
+    title: "Office Partition",
+    description: "Glass partitions for offices",
     image: officePartition,
   },
   {
-    title: "फलामको ट्रस",
-    titleEn: "Iron Truss",
-    description: "फलामको ट्रस संरचना",
+    title: "Iron Truss",
+    description: "Durable iron truss structures",
     image: ironTruss,
   },
 ];
@@ -98,7 +86,7 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
   return (
     <motion.div
       ref={ref}
-      className="service-card-3d relative group cursor-pointer overflow-hidden rounded-xl"
+      className="service-card relative group cursor-pointer overflow-hidden rounded-xl"
       initial={{ opacity: 0, y: 60, rotateX: -15 }}
       animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{
@@ -108,21 +96,19 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
       }}
     >
       <div
-        className="relative h-full bg-card border border-border"
+        className="relative h-full bg-card border border-border rounded-xl"
         style={{
           boxShadow: "0 10px 30px hsl(var(--foreground) / 0.1)",
         }}
       >
         {/* Image */}
-        <div className="relative h-40 overflow-hidden">
-          {!imageLoaded && (
-            <div className="absolute inset-0 bg-secondary animate-pulse" />
-          )}
+        <div className="relative h-40 overflow-hidden rounded-t-xl">
+          {!imageLoaded && <div className="absolute inset-0 bg-secondary animate-pulse" />}
           <img
             src={service.image}
-            alt={service.titleEn}
+            alt={service.title}
             className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
+              imageLoaded ? "opacity-100" : "opacity-0"
             }`}
             onLoad={() => setImageLoaded(true)}
             loading="lazy"
@@ -131,29 +117,24 @@ const ServiceCard = ({ service, index }: { service: typeof services[0]; index: n
           <div
             className="absolute top-0 left-0 w-20 h-20 pointer-events-none"
             style={{
-              background: "linear-gradient(135deg, hsl(var(--primary) / 0.6) 0%, transparent 50%)",
+              background:
+                "linear-gradient(135deg, hsl(var(--primary) / 0.6) 0%, transparent 50%)",
             }}
           />
         </div>
 
         {/* Content */}
         <div className="p-4">
-          <h3 className="font-nepali text-lg font-bold text-primary mb-1">
-            {service.title}
-          </h3>
-          <p className="font-body text-xs text-muted-foreground mb-1">
-            {service.titleEn}
-          </p>
-          <p className="font-nepali text-sm text-foreground/80 leading-relaxed">
-            {service.description}
-          </p>
+          <h3 className="text-lg font-bold text-primary mb-1">{service.title}</h3>
+          <p className="text-sm text-foreground/80 leading-relaxed">{service.description}</p>
         </div>
 
         {/* Hover glow */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500"
           style={{
-            background: "radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), transparent 70%)",
+            background:
+              "radial-gradient(circle at 50% 50%, hsl(var(--primary) / 0.1), transparent 70%)",
           }}
         />
       </div>
@@ -166,18 +147,7 @@ const ServicesSection = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="services"
-      ref={sectionRef}
-      className="relative py-32 overflow-hidden bg-secondary"
-    >
-      <div
-        className="absolute top-0 left-0 w-full h-px"
-        style={{
-          background: "linear-gradient(90deg, transparent, hsl(var(--primary)), transparent)",
-        }}
-      />
-
+    <section id="services" ref={sectionRef} className="relative py-32 overflow-hidden bg-secondary">
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -185,22 +155,15 @@ const ServicesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <motion.span
-            className="inline-block font-nepali text-primary tracking-wide mb-4 text-lg"
-          >
-            हाम्रा सेवाहरू
+          <motion.span className="inline-block text-primary tracking-wide mb-4 text-lg font-bold">
+            Our Services
           </motion.span>
-          <h2
-            className="font-nepali text-3xl md:text-5xl font-bold text-primary"
-          >
-            सेवाहरू
-          </h2>
-          <p className="font-body text-muted-foreground mt-2">Our Services</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-primary">Services</h2>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={service.titleEn} service={service} index={index} />
+            <ServiceCard key={service.title} service={service} index={index} />
           ))}
         </div>
 
@@ -211,10 +174,9 @@ const ServicesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5 }}
         >
-          <h3 className="font-nepali text-xl text-primary mb-2">खुल्ने समय / Opening Hours</h3>
-          <p className="font-nepali text-foreground text-lg">आइतबार - शुक्रबार: बिहान ९:०० - साँझ ७:००</p>
-          <p className="font-body text-muted-foreground">Sunday - Friday: 9:00 AM - 7:00 PM</p>
-          <p className="font-nepali text-destructive mt-2">शनिबार: बन्द / Saturday: Closed</p>
+          <h3 className="text-xl text-primary mb-2 font-bold">Opening Hours</h3>
+          <p className="text-foreground text-lg">Sunday - Friday: 9:00 AM - 7:00 PM</p>
+          <p className="text-destructive mt-2">Saturday: Closed</p>
         </motion.div>
       </div>
     </section>
