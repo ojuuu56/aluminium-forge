@@ -36,24 +36,6 @@ const HeroSection = () => {
             background: "radial-gradient(circle at bottom left, hsl(var(--accent) / 0.15), transparent 70%)",
           }}
         />
-
-        {/* Falling glitters / petals */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{ y: ["0%", "100%"] }}
-          transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-        >
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-primary/50"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
-        </motion.div>
       </div>
 
       {/* Main Content */}
@@ -66,93 +48,98 @@ const HeroSection = () => {
           className="text-center mb-8"
         >
           <motion.h1 className="font-nepali text-5xl md:text-6xl lg:text-7xl font-bold mb-2 text-primary">
-            NEPAL ALUMINIUM
+            नेपाल अल्युमिनियम
           </motion.h1>
           <motion.p className="font-heading text-2xl md:text-3xl font-bold tracking-wider text-foreground">
-            Aluminium & UPVC fabrication, windows, doors & glass works
+            NEPAL ALUMINIUM
+          </motion.p>
+          <motion.p
+            className="font-nepali text-lg text-muted-foreground mt-3 max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            अल्युमिनियम र UPVC को झ्याल, ढोका तथा सिसाको सम्पूर्ण काम
           </motion.p>
         </motion.div>
 
-        {/* Shop Board */}
+        {/* Shop Board - Large Display at TOP */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 relative group"
+          className="mb-8"
         >
           <img
             src={shopBoard}
-            alt="NEPAL ALUMINIUM - Shop Board"
-            className="w-full max-w-5xl mx-auto h-auto object-cover rounded-2xl shadow-2xl"
-            style={{ boxShadow: "0 30px 80px hsl(var(--foreground) / 0.2)" }}
-            loading="eager"
-          />
-          <div
-            className="absolute inset-0 pointer-events-none rounded-2xl"
+            alt="नेपाल अल्युमिनियम - Shop Board - सम्पूर्ण सेवाहरू"
+            className="w-full max-w-5xl mx-auto h-auto object-contain rounded-2xl shadow-2xl"
             style={{
-              background:
-                "radial-gradient(circle at center, hsl(var(--accent)/0.08), transparent 70%)",
+              boxShadow: "0 30px 80px hsl(var(--foreground) / 0.2)",
             }}
+            loading="eager"
           />
         </motion.div>
 
-        {/* Shop Front + Contact */}
+        {/* Shop Front + Contact Info Grid */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Shop Front with Frame */}
+          {/* Shop Front */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center relative"
+            className="flex justify-center"
           >
-            <div className="border-4 border-primary rounded-xl p-2 relative">
-              <img
-                src={shopFront}
-                alt="NEPAL ALUMINIUM Shop - Biratnagar"
-                className="w-full max-w-lg h-auto object-cover rounded-lg shadow-lg"
-                style={{ boxShadow: "0 20px 50px hsl(var(--foreground) / 0.15)" }}
-                loading="eager"
-              />
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary/70 text-white rounded px-3 py-1 text-center">
-                <p className="font-nepali font-bold text-sm">NEPAL ALUMINIUM Shop</p>
-                <p className="font-nepali text-xs">Kesaliya Road, Biratnagar-6</p>
-              </div>
-            </div>
+            <img
+              src={shopFront}
+              alt="नेपाल अल्युमिनियम पसल - बिराटनगर"
+              className="w-full max-w-lg h-auto object-contain rounded-xl shadow-xl"
+              style={{
+                boxShadow: "0 20px 50px hsl(var(--foreground) / 0.15)",
+              }}
+              loading="eager"
+            />
           </motion.div>
 
-          {/* Contact Card */}
+          {/* Contact Cards */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             className="space-y-4"
           >
-            {/* Call Now */}
+            {/* Call Now - Primary */}
             <a
               href="tel:+9779814318483"
               className="flex items-center gap-4 p-5 rounded-xl group transition-all duration-300 hover:scale-[1.02] bg-primary"
-              style={{ boxShadow: "0 10px 30px hsl(var(--primary) / 0.35)" }}
+              style={{
+                boxShadow: "0 10px 30px hsl(var(--primary) / 0.35)",
+              }}
             >
               <div className="w-14 h-14 flex items-center justify-center bg-primary-foreground/20 rounded-full">
                 <Phone className="w-7 h-7 text-primary-foreground" />
               </div>
               <div>
-                <span className="font-nepali text-primary-foreground/90 text-sm block">Call Now</span>
+                <span className="font-nepali text-primary-foreground/90 text-sm block">कल गर्नुहोस्</span>
                 <span className="font-heading text-2xl text-primary-foreground font-bold">9814318483</span>
               </div>
             </a>
 
-            {/* WhatsApp */}
+            {/* Call Now - Secondary */}
             <a
-              href="https://wa.me/9779862198360"
-              target="_blank"
-              className="flex items-center gap-4 p-5 rounded-xl bg-accent transition-all duration-300 hover:scale-[1.02]"
+              href="tel:+9779862198360"
+              className="flex items-center gap-4 p-4 rounded-xl group transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent) / 0.8))",
+                boxShadow: "0 8px 25px hsl(var(--accent) / 0.35)",
+              }}
             >
-              <div className="w-14 h-14 flex items-center justify-center bg-accent-foreground/20 rounded-full">
-                <Phone className="w-7 h-7 text-accent-foreground" />
+              <div className="w-12 h-12 flex items-center justify-center bg-accent-foreground/10 rounded-full">
+                <Phone className="w-6 h-6 text-accent-foreground" />
               </div>
               <div>
-                <span className="font-heading text-accent-foreground font-bold">Message on WhatsApp</span>
+                <span className="font-nepali text-accent-foreground/80 text-sm block">कल गर्नुहोस्</span>
+                <span className="font-heading text-xl text-accent-foreground font-bold">9862198360</span>
               </div>
             </a>
 
@@ -162,8 +149,9 @@ const HeroSection = () => {
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <span className="font-nepali text-muted-foreground text-sm">Address:</span>
-                <p className="font-nepali text-foreground">Kesaliya Road, Biratnagar-6</p>
+                <span className="font-nepali text-muted-foreground text-sm">ठेगाना / Address:</span>
+                <p className="font-nepali text-foreground">केसलिया रोड, बिराटनगर-६</p>
+                <p className="text-sm text-muted-foreground">Kesaliya Road, Biratnagar 6</p>
               </div>
             </div>
 
@@ -173,13 +161,27 @@ const HeroSection = () => {
                 <Clock className="w-6 h-6 text-accent-foreground" />
               </div>
               <div>
-                <span className="font-nepali text-muted-foreground text-sm">Opening Hours:</span>
-                <p className="font-nepali text-foreground">Sun - Fri: 9:00 AM - 7:00 PM</p>
-                <p className="text-sm text-destructive">Saturday: Closed</p>
+                <span className="font-nepali text-muted-foreground text-sm">खुल्ने समय / Opening Hours:</span>
+                <p className="font-nepali text-foreground">आइत - शुक्र: बिहान ९:०० - साँझ ७:००</p>
+                <p className="text-sm text-primary">शनिबार: बन्द (Saturday: Closed)</p>
               </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Proprietor Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center py-6 px-8 rounded-xl mx-auto max-w-md mt-8 bg-accent/10 border border-accent/30"
+        >
+          <span className="font-nepali text-muted-foreground">प्रोप्राइटर / Proprietor:</span>
+          <p className="font-heading text-xl font-bold mt-1 text-primary">
+            मनोज कुमार मण्डल
+          </p>
+          <p className="text-sm text-muted-foreground">Manoj Kumar Mandal</p>
+        </motion.div>
       </motion.div>
 
       {/* Bottom decorative wave */}
