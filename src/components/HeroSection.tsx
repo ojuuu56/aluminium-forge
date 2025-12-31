@@ -24,7 +24,6 @@ const HeroSection = () => {
             backgroundSize: "60px 60px",
           }}
         />
-        {/* Radial gradients for theme */}
         <div
           className="absolute top-0 right-0 w-96 h-96"
           style={{
@@ -38,7 +37,7 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Subtle falling glitter / petal animation */}
+        {/* Falling glitters / petals */}
         <motion.div
           className="absolute inset-0"
           animate={{ y: ["0%", "100%"] }}
@@ -67,22 +66,14 @@ const HeroSection = () => {
           className="text-center mb-8"
         >
           <motion.h1 className="font-nepali text-5xl md:text-6xl lg:text-7xl font-bold mb-2 text-primary">
-            नेपाल अल्युमिनियम
+            NEPAL ALUMINIUM
           </motion.h1>
           <motion.p className="font-heading text-2xl md:text-3xl font-bold tracking-wider text-foreground">
-            NEPAL ALUMINIUM
-          </motion.p>
-          <motion.p
-            className="font-nepali text-lg text-muted-foreground mt-3 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
             Aluminium & UPVC fabrication, windows, doors & glass works
           </motion.p>
         </motion.div>
 
-        {/* Shop Board - blended */}
+        {/* Shop Board */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,20 +82,21 @@ const HeroSection = () => {
         >
           <img
             src={shopBoard}
-            alt="नेपाल अल्युमिनियम - Shop Board"
+            alt="NEPAL ALUMINIUM - Shop Board"
             className="w-full max-w-5xl mx-auto h-auto object-cover rounded-2xl shadow-2xl"
-            style={{
-              boxShadow: "0 30px 80px hsl(var(--foreground) / 0.2)",
-            }}
+            style={{ boxShadow: "0 30px 80px hsl(var(--foreground) / 0.2)" }}
             loading="eager"
           />
-          {/* Overlay pattern for blending */}
-          <div className="absolute inset-0 pointer-events-none rounded-2xl"
-               style={{ background: "radial-gradient(circle at center, hsl(var(--accent)/0.08), transparent 70%)" }}
+          <div
+            className="absolute inset-0 pointer-events-none rounded-2xl"
+            style={{
+              background:
+                "radial-gradient(circle at center, hsl(var(--accent)/0.08), transparent 70%)",
+            }}
           />
         </motion.div>
 
-        {/* Shop Front + Contact Info */}
+        {/* Shop Front + Contact */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           {/* Shop Front with Frame */}
           <motion.div
@@ -116,16 +108,14 @@ const HeroSection = () => {
             <div className="border-4 border-primary rounded-xl p-2 relative">
               <img
                 src={shopFront}
-                alt="नेपाल अल्युमिनियम पसल - बिराटनगर"
+                alt="NEPAL ALUMINIUM Shop - Biratnagar"
                 className="w-full max-w-lg h-auto object-cover rounded-lg shadow-lg"
-                style={{
-                  boxShadow: "0 20px 50px hsl(var(--foreground) / 0.15)",
-                }}
+                style={{ boxShadow: "0 20px 50px hsl(var(--foreground) / 0.15)" }}
                 loading="eager"
               />
               <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary/70 text-white rounded px-3 py-1 text-center">
-                <p className="font-nepali font-bold text-sm">नेपाल अल्युमिनियम पसल</p>
-                <p className="font-nepali text-xs">केसलिया रोड, बिराटनगर-६</p>
+                <p className="font-nepali font-bold text-sm">NEPAL ALUMINIUM Shop</p>
+                <p className="font-nepali text-xs">Kesaliya Road, Biratnagar-6</p>
               </div>
             </div>
           </motion.div>
@@ -141,9 +131,7 @@ const HeroSection = () => {
             <a
               href="tel:+9779814318483"
               className="flex items-center gap-4 p-5 rounded-xl group transition-all duration-300 hover:scale-[1.02] bg-primary"
-              style={{
-                boxShadow: "0 10px 30px hsl(var(--primary) / 0.35)",
-              }}
+              style={{ boxShadow: "0 10px 30px hsl(var(--primary) / 0.35)" }}
             >
               <div className="w-14 h-14 flex items-center justify-center bg-primary-foreground/20 rounded-full">
                 <Phone className="w-7 h-7 text-primary-foreground" />
@@ -175,8 +163,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <span className="font-nepali text-muted-foreground text-sm">Address:</span>
-                <p className="font-nepali text-foreground">केसलिया रोड, बिराटनगर-६</p>
-                <p className="text-sm text-muted-foreground">Kesaliya Road, Biratnagar 6</p>
+                <p className="font-nepali text-foreground">Kesaliya Road, Biratnagar-6</p>
               </div>
             </div>
 
